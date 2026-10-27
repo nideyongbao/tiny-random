@@ -1,0 +1,40 @@
+{
+  "checkpoint_revision": "aeb642e89f4bb6b55b186ca440edff0acb9ee9f5",
+  "routed_expert_scale_tensors": 576,
+  "routed_expert_scale_elements": 9216,
+  "all_expert_scales_equal_one": true,
+  "other_scale_tensor_count": 39,
+  "other_scale_range": [
+    0.00011880056990776211,
+    0.0002245221839984879
+  ],
+  "observed_expert_max_abs": 448,
+  "diagnosis": "Model-card generation script packs split expert weights, then packs all 2D .weight tensors again. Second pack overwrites original scales with 1.0. Minimal double-pack reproduction confirms loss of scale. No weights modified.",
+  "first_moe_input_max_difference_approx": 1.7e-06,
+  "first_moe_output_max_difference_approx": 1.55,
+  "first_decode_router_top8_sets_equal": true,
+  "first_decode_dsa_indices_equal": true,
+  "source": "https://huggingface.co/tiny-random/glm-5.3-flash/blob/aeb642e89f4bb6b55b186ca440edff0acb9ee9f5/README.md",
+  "source_lines": {
+    "pack_definition": [
+      203,
+      211
+    ],
+    "first_pack": [
+      243,
+      253
+    ],
+    "second_pack": [
+      255,
+      259
+    ]
+  },
+  "synthetic_double_pack": {
+    "first_scale_range": [
+      0.00013549647701438516,
+      0.00018843237194232643
+    ],
+    "second_scales_all_one": true,
+    "quantized_values_unchanged": true
+  }
+}

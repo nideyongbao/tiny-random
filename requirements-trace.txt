@@ -1,0 +1,7 @@
+# Capture only; the static viewer has no Python/Node runtime dependency.
+# The published snapshot used the host's torch 2.11.0+cu130 on CPU.
+torch==2.11.0
+transformers==5.20.2
+safetensors==0.8.0
+accelerate==1.15.0
+tokenizers==0.23.3

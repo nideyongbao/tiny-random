@@ -1,47 +1,7 @@
-<!doctype html>
-<html lang="zh-CN">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="探索 tiny-random 模型的结构、数据流与架构差异。">
-  <title>tiny-random · Architecture Lab</title>
-  <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-  <header class="app-header">
-    <a class="brand" href="./"><span class="brand-mark" aria-hidden="true">t<span>r</span></span><span>tiny-random<span class="brand-sub">Architecture Lab</span></span></a>
-    <div class="header-end"><span class="prototype-label">交互原型 · 01</span><a class="external" href="https://huggingface.co/collections/tiny-random/tiny-ramdom-models" target="_blank" rel="noreferrer">Collection ↗</a></div>
-  </header>
-  <div class="workspace">
-    <aside class="sidebar">
-      <div class="sidebar-heading">MODEL EXPLORER <span>02</span></div>
-      <div class="family-title"><span class="family-dot"></span> GLM <span>家族</span></div>
-      <button class="model-choice selected" data-model="flash" aria-pressed="true"><span class="model-name">GLM-5.3-Flash</span><span class="model-kind">Vision · Hybrid · MoE</span><span class="choice-arrow">↗</span></button>
-      <button class="model-choice" data-model="glm" aria-pressed="false"><span class="model-name">GLM-5.3</span><span class="model-kind">Language · DSA · MoE</span><span class="choice-arrow">↗</span></button>
-      <div class="sidebar-rule"></div>
-      <div class="sidebar-note"><span class="tiny-square"></span><div>小模型，真实结构。<p>展示 tiny 实例的配置与结构。<br>参数规模不代表原始基模。</p></div></div>
-      <a class="sidebar-source" href="https://huggingface.co/tiny-random/glm-5.3-flash" target="_blank" rel="noreferrer">在 Hugging Face 查看 ↗</a>
-    </aside>
-    <main>
-      <div class="page-heading"><div><div class="eyebrow">MODEL / STRUCTURE</div><h1 id="model-title">GLM-5.3-Flash</h1><p id="model-subtitle">视觉分支 × 混合注意力 × 专家路由</p></div><div class="heading-action"><button class="button compare-button" id="compare-button">⇄ <span>对比 GLM-5.3</span></button><a class="source-button" id="config-link" target="_blank" rel="noreferrer">配置原文 ↗</a></div></div>
-      <div class="meta-strip" id="meta-strip"></div>
-      <section class="explorer" id="explorer" aria-label="模型架构探索">
-        <div class="graph-panel">
-          <div class="graph-toolbar"><div class="view-label"><span class="live-dot"></span>架构总览</div><div class="graph-controls"><label class="switch-label"><input id="dimension-toggle" type="checkbox"><span class="switch"></span>显示尺寸</label><button class="small-button" id="expand-button" aria-pressed="false">展开主干层</button></div></div>
-          <div class="path-toolbar"><span>输入路径</span><div class="segmented" role="group" aria-label="输入路径"><button data-path="all" class="active" aria-pressed="true">全部</button><button data-path="text" aria-pressed="false">文本</button><button data-path="vision" aria-pressed="false">图文</button></div><button class="trace-button" id="trace-button">▷ 路径演示</button></div>
-          <div class="canvas" id="canvas"></div>
-          <div class="graph-footer"><div class="legend"><span><i class="vision-color"></i>视觉</span><span><i class="kda-color"></i>KDA</span><span><i class="dsa-color"></i>DSA</span><span><i class="moe-color"></i>MoE</span></div><span>结构示意 · 点击模块探索</span></div>
-        </div>
-        <aside class="inspector" aria-label="所选模块详情"><div class="inspector-top"><span>MODULE INSPECTOR</span><span id="selection-type">TEXT BACKBONE</span></div><div id="inspector-content" aria-live="polite"></div></aside>
-      </section>
-      <section id="comparison" hidden aria-label="模型对比">
-        <div class="compare-head"><div><h2>对齐结构，看见差异</h2><p>比较两个 tiny 实例；分组表示功能对应，不代表层号一一等价。</p></div><label class="switch-label"><input id="compare-size" type="checkbox"><span class="switch"></span>显示尺寸</label></div>
-        <div class="compare-grid" id="compare-grid"></div>
-        <div class="compare-conclusion"><span>关键差异</span><p>Flash 增加视觉分支，并在主干中交替使用 KDA 与 DSA。GLM-5.3 使用 DSA 架构，其索引器配置包含计算与共享安排。主干深度是 tiny 配置的选择，不用于判断基模规模。</p></div>
-      </section>
-      <footer class="page-footer"><span>Based on configuration, tensor metadata & implementation</span><span id="revision-label">tiny revision · aeb642e8</span></footer>
-    </main>
-  </div>
-  <script src="./app.js"></script>
-</body>
-</html>
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>tiny-random · Execution Atlas</title><meta name="description" content="从 prompt 到自回归 token：真实算子、张量与缓存回放。"><link rel="stylesheet" href="replay.css"></head><body>
+<header><a class="brand" href="./"><b>tr</b><div>tiny-random<small>EXECUTION ATLAS</small></div></a><div class="header-end"><span class="badge">REFERENCE TRACE · 02</span><a href="architecture.html">架构对比 ↗</a></div></header>
+<div class="workspace"><aside class="navigation"><div class="eyebrow">MODEL / EXECUTION</div><h3>GLM-5.3-Flash</h3><p class="muted">tiny · hybrid attention · MoE</p><div class="nav-heading">一次生成的旅程</div><button id="prepare-nav" class="nav-item">00 <span>Prompt → tokens</span></button><div id="step-nav"></div><div class="nav-heading">8 层主干 · 0-based</div><div id="layer-nav"></div><p class="nav-note">真实 CPU / FP32 参考执行。<br>固定 prompt 回放，不在浏览器推理。</p><a class="download" href="trace/session.json" download>下载执行记录 ↓</a></aside>
+<main><div class="page-title"><div><div class="eyebrow">FOLLOW A TOKEN THROUGH THE MODEL</div><h1>把一次生成，展开来看。</h1><p>从对话模板到每一步计算，追踪张量与状态如何变化。</p></div><span class="recorded">● 已采集真实前向</span></div><div id="session-meta" class="meta-strip"></div>
+<section class="timeline-panel"><div class="panel-head"><span id="phase-label">正在载入记录…</span><div><button id="previous-step" aria-label="上一步">←</button><button id="next-step" aria-label="下一步">下一步 →</button></div></div><div id="timeline" class="timeline"></div><div id="generated-tokens" class="generated-tokens"></div></section>
+<div class="checkpoint-note">数值诊断：上游 tiny checkpoint 的专家量化尺度异常；cached / full 一致性未通过。<button data-tab="verify">查看证据 →</button></div>
+<nav class="tabs" aria-label="执行视图"><button data-tab="prepare" class="active">01 输入与模板</button><button data-tab="graph">02 数据流</button><button data-tab="state">03 状态与路由</button><button data-tab="ops">04 算子显微镜</button><button data-tab="verify">05 来源与验证</button></nav><div id="view" aria-live="polite"><div class="panel panel-body">正在读取执行记录…</div></div><footer>真实记录与解释图分开标注 · 张量显示采样值 · 不包含权重文件 <a href="https://huggingface.co/tiny-random/glm-5.3-flash/tree/aeb642e89f4bb6b55b186ca440edff0acb9ee9f5" target="_blank" rel="noreferrer">Checkpoint ↗</a></footer></main></div><script src="replay.js"></script></body></html>
