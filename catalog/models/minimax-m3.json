@@ -1,0 +1,490 @@
+{
+  "id": "minimax-m3",
+  "order": 7,
+  "name": "MiniMax · M3",
+  "family": {
+    "id": "minimax",
+    "name": "MiniMax"
+  },
+  "reviewed_on": "2026-10-27",
+  "sources": [
+    {
+      "id": "base",
+      "label": "指定基模配置",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3/blob/d95e30cb912fe3021bb9c2ba66a8ce60b6c937a9/config.json",
+      "revision": "d95e30cb912fe3021bb9c2ba66a8ce60b6c937a9",
+      "local": "sources/models/minimax-m3/base.config.json",
+      "sha256": "c9c97ce1e4eece60012d5a10ea87717458bfb1f19c2c7a615a3dbff83d090c6b",
+      "repo": "MiniMaxAI/MiniMax-M3"
+    },
+    {
+      "id": "base-card",
+      "label": "基模模型卡",
+      "url": "https://huggingface.co/MiniMaxAI/MiniMax-M3/blob/d95e30cb912fe3021bb9c2ba66a8ce60b6c937a9/README.md",
+      "revision": "d95e30cb912fe3021bb9c2ba66a8ce60b6c937a9"
+    },
+    {
+      "id": "code",
+      "label": "vLLM 固定版本实现参考（未执行）",
+      "url": "https://github.com/vllm-project/vllm/blob/f8f7634cb43a2b1b33b15c840be3fa1bbcdb3bc0/vllm/models/minimax_m3/nvidia/model.py",
+      "revision": "f8f7634cb43a2b1b33b15c840be3fa1bbcdb3bc0",
+      "sha256": "f31f18ed74f260170f1313a8aa49ef279e9564e4e45d57ef634c394fe5aa8f05"
+    },
+    {
+      "id": "index-code",
+      "label": "MSA local/top-k预算实现",
+      "url": "https://github.com/vllm-project/vllm/blob/f8f7634cb43a2b1b33b15c840be3fa1bbcdb3bc0/vllm/models/minimax_m3/common/ops/index_topk.py",
+      "revision": "f8f7634cb43a2b1b33b15c840be3fa1bbcdb3bc0"
+    }
+  ],
+  "variants": {
+    "base": {
+      "label": "指定基模",
+      "dimensions": {
+        "layers": 60,
+        "hidden": 6144,
+        "vocab": 200064,
+        "experts": 128,
+        "top_k": 4,
+        "expert_width": 3072,
+        "q_heads": 64,
+        "kv_heads": 4,
+        "shared": 1,
+        "context": 1048576,
+        "tied": false,
+        "streams": 1,
+        "stream_hidden": 6144
+      },
+      "attention_schedule": [
+        "GQA",
+        "GQA",
+        "GQA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA",
+        "MSA"
+      ],
+      "ffn_schedule": [
+        "Dense",
+        "Dense",
+        "Dense",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE"
+      ],
+      "config_source": "base"
+    }
+  },
+  "evidence": "配置与实现核对；非执行轨迹",
+  "has_trace": false,
+  "category": "块稀疏",
+  "modalities": [
+    "文本",
+    "图像",
+    "视频"
+  ],
+  "summary": "MSA 按 GQA group 选择历史块；主分支仍是精确 softmax attention，不是旧 MiniMax 的线性注意力。",
+  "pattern": "3 × GQA/Dense → 57 × MSA/MoE",
+  "tiny_status": "未找到精确 M3 tiny",
+  "tiny_note": "Collection 中有 MiniMax H3、M3.1-Flash 等，但本次未找到精确 M3 tiny。不替换型号；本页只展示官方 M3 基模。",
+  "highlights": [
+    "每个GQA group独立选择16个128-token块",
+    "128专家选4 +1 shared；路由权重和为2.0",
+    "SwiGLU-OAI激活；标准残差与Gemma-style norm"
+  ],
+  "input": "文本embedding；CLIP-style ViT32层/H1280/patch14、3D RoPE，spatial merge2、temporal2 → projector到H6144，按图像／视频占位拼接。",
+  "norm": "层norm与Q/K per-head norm使用Gemma风格RMSNorm(1+w)。attention_output_gate=false。",
+  "position": "RoPE theta5,000,000，每head128中仅64维旋转。索引分支与主attention的具体后端数据布局见实现来源。",
+  "residual": {
+    "title": "普通单路 residual",
+    "summary": "attention与Dense/MoE各走一次pre-norm residual。",
+    "steps": [
+      "Gemma-style pre-RMSNorm",
+      "GQA / MSA",
+      "residual add",
+      "pre-RMSNorm",
+      "Dense / MoE",
+      "residual add"
+    ],
+    "equations": [
+      "X₁=X+Attention(Norm₁(X))",
+      "X₂=X₁+FFN(Norm₂(X₁))"
+    ],
+    "notes": [],
+    "sources": [
+      "base",
+      "code"
+    ]
+  },
+  "output": "Final norm → 不绑定的LM head200064 → next-token选择。MTP调度是可选路径，不计入60层主干。",
+  "prefill": "前3层完整GQA；其余MSA由index branch为每个query/group选择可见块，主分支在这些块上执行因果softmax attention。",
+  "decode": "追加主K/V与index K；更新块可见性、保留当前local block，再选择历史块。稀疏选择不等于删除历史KV。",
+  "extra": "MSA索引无value分支；block_size128，block score type=max；每group的top16预算已经包含强制保留的local block，不是16+1。",
+  "mtp": "配置num_mtp_modules=7且num_nextn_predict_layers=1；保留原字段含义，不直接把两者都当新增7层或1层主干。",
+  "attention": {
+    "GQA": {
+      "title": "Dense GQA · first 3 layers",
+      "summary": "前3层使用全局GQA，与Dense FFN配对。",
+      "steps": [
+        "Q/K/V projection",
+        "per-head Gemma RMSNorm",
+        "partial RoPE64/128",
+        "KV cache",
+        "causal softmax attention",
+        "O projection"
+      ],
+      "equations": [
+        "Q:[B,64,T,128]; K,V:[B,4,L,128]"
+      ],
+      "notes": [],
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "MSA": {
+      "title": "MiniMax Sparse Attention · per-group block selection",
+      "summary": "每个GQA group选择总计16个128-token块；local block先强制高分，再包含在16个top-k预算中。",
+      "steps": [
+        "main Q/K/V + index Q/K projection",
+        "Q/K norm + partial RoPE",
+        "append main and index-key caches",
+        "per-group block score=max",
+        "top16 blocks（包含强制保留的local block）",
+        "exact causal attention on selected blocks",
+        "O projection"
+      ],
+      "equations": [
+        "GQA groups=4; Qheads=64; KVheads=4",
+        "index heads=4; index head dim128",
+        "block size128; top blocks16; local blocks1"
+      ],
+      "notes": [
+        "没有attention输出门。MSA不会把KV变成定长递归矩阵。",
+        "官方config/card固定revision；vLLM源码参考有单独版本说明。"
+      ],
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "moe": {
+    "title": "Sigmoid MoE + SwiGLU-OAI",
+    "summary": "前3Dense，后57MoE；128专家选4 +1共享专家。",
+    "steps": [
+      "同一输入分成并行分支",
+      "各分支独立计算（下图）",
+      "routed output + shared output →当前模型的FFN residual更新"
+    ],
+    "equations": [
+      "gate × sigmoid(α·gate) × (up + β)",
+      "α=1.702; clamp limit=7; β须以实现为准",
+      "Σ selected router weights =2.0"
+    ],
+    "notes": [
+      "原始config未提供β，本站不无来源固定其数值。",
+      "dense width12288；expert/shared width3072。",
+      "Router的ID/weights控制routed专家分支；原始H同时送入专家投影。Router输出不是送给shared的输入，也不直接加到最终hidden。"
+    ],
+    "sources": [
+      "base",
+      "code"
+    ],
+    "routing_steps": [
+      "FP32 linear →sigmoid",
+      "score+bias选择top4",
+      "取原score[ids]归一化×2.0"
+    ],
+    "branches": [
+      {
+        "title": "ROUTER · from original H",
+        "steps": [
+          "FP32 linear →sigmoid",
+          "score+bias选择top4",
+          "取原score[ids]归一化×2.0"
+        ]
+      },
+      {
+        "title": "ROUTED EXPERTS · from X",
+        "steps": [
+          "与Router相同的H输入",
+          "按expert IDs执行专家gated MLP",
+          "按Router weights加权求和"
+        ]
+      },
+      {
+        "title": "SHARED BRANCH",
+        "steps": [
+          "同一H输入",
+          "always-on shared gated MLP"
+        ]
+      }
+    ],
+    "merge": "routed output + shared output →当前模型的FFN residual更新"
+  },
+  "states": [
+    {
+      "name": "Main K/V（每个）",
+      "base_shape": "[B,4,L,128]",
+      "tiny_shape": null,
+      "growth": "随L增长",
+      "detail": "语义上只读取被选块，历史KV并不会因此自动删除。"
+    },
+    {
+      "name": "MSA index-key cache",
+      "base_shape": "per-group index K history",
+      "tiny_shape": null,
+      "growth": "随L增长",
+      "detail": "index heads4、dim128。具体物理layout由执行后端定义，本站不伪造实测shape。"
+    }
+  ],
+  "comparison": {
+    "input": {
+      "signature": "文本,图像,视频:minimax-m3",
+      "title": "文本 / 图像 / 视频",
+      "detail": "文本embedding；CLIP-style ViT32层/H1280/patch14、3D RoPE，spatial merge2、temporal2 → projector到H6144，按图像／视频占位拼接。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "attention": {
+      "signature": "msa",
+      "title": "3 × GQA/Dense → 57 × MSA/MoE",
+      "detail": "MSA 按 GQA group 选择历史块；主分支仍是精确 softmax attention，不是旧 MiniMax 的线性注意力。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "position": {
+      "signature": "partial-rope",
+      "title": "RoPE theta5,000,000，每head128中仅64维旋转。索引分支与主attention的具体后端数据布局见实现来源。",
+      "detail": "RoPE theta5,000,000，每head128中仅64维旋转。索引分支与主attention的具体后端数据布局见实现来源。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "normalization": {
+      "signature": "minimax-m3-norm",
+      "title": "归一化位置与参数化",
+      "detail": "层norm与Q/K per-head norm使用Gemma风格RMSNorm(1+w)。attention_output_gate=false。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "residual": {
+      "signature": "plain-zero-rms",
+      "title": "普通单路 residual",
+      "detail": "attention与Dense/MoE各走一次pre-norm residual。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "routing": {
+      "signature": "sigmoid-scale2",
+      "title": "Sigmoid MoE + SwiGLU-OAI",
+      "detail": "FP32 linear →sigmoid → score+bias选择top4 → 取原score[ids]归一化×2.0",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "experts": {
+      "signature": "swiglu-oai:(128, 4, 3072)",
+      "title": "128 专家选 4 · width 3072",
+      "detail": "前3Dense，后57MoE；128专家选4 +1共享专家。 原始config未提供β，本站不无来源固定其数值。 dense width12288；expert/shared width3072。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "shared": {
+      "signature": "shared",
+      "title": "1个独立shared expert，不占top-k",
+      "detail": "shared不参与routed top-k；此行按实际分支语义对齐。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "state": {
+      "signature": "msa-cache",
+      "title": "Main K/V（每个） / MSA index-key cache",
+      "detail": "Main K/V（每个）: 随L增长；MSA index-key cache: 随L增长",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "prefill": {
+      "signature": "msa-prefill",
+      "title": "Prompt并行前向",
+      "detail": "前3层完整GQA；其余MSA由index branch为每个query/group选择可见块，主分支在这些块上执行因果softmax attention。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "decode": {
+      "signature": "msa-decode",
+      "title": "单token状态推进",
+      "detail": "追加主K/V与index K；更新块可见性、保留当前local block，再选择历史块。稀疏选择不等于删除历史KV。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "output": {
+      "signature": "zero-rms-lm",
+      "title": "Final norm → 不绑定的LM head200064 → next-token选择",
+      "detail": "Final norm → 不绑定的LM head200064 → next-token选择。MTP调度是可选路径，不计入60层主干。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "auxiliary": {
+      "signature": "minimax-m3-aux",
+      "title": "可选模块与不执行的分支",
+      "detail": "MSA索引无value分支；block_size128，block score type=max；每group的top16预算已经包含强制保留的local block，不是16+1。 配置num_mtp_modules=7且num_nextn_predict_layers=1；保留原字段含义，不直接把两者都当新增7层或1层主干。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "indexer": {
+      "signature": "group-blocks",
+      "title": "每个GQA group选择历史块",
+      "detail": "block128，总预算top16（含强制保留的local block）；按group分别索引，block score=max。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "gating": {
+      "signature": "none",
+      "title": "配置attention_output_gate=false",
+      "detail": "MSA为块选择+softmax attention，不能套旧MiniMax线性递归门。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "limitations": [
+    "本站结构页展示配置与源码级数据流，没有为此基模采集token、激活、路由权重或logits。",
+    "同名功能按语义阶段对齐，不将不同深度的层号一一等价，也不把稀疏可见性当成所有后端的物理内存或性能结论。"
+  ]
+}

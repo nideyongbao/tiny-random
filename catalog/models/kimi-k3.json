@@ -1,0 +1,651 @@
+{
+  "id": "kimi-k3",
+  "order": 8,
+  "name": "Kimi · K3",
+  "family": {
+    "id": "kimi",
+    "name": "Kimi"
+  },
+  "reviewed_on": "2026-10-27",
+  "sources": [
+    {
+      "id": "base",
+      "label": "指定基模配置",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3/blob/f831ab66814297da540d832a5235f8e904f29d06/config.json",
+      "revision": "f831ab66814297da540d832a5235f8e904f29d06",
+      "local": "sources/models/kimi-k3/base.config.json",
+      "sha256": "9710e121a58d03ac92c8d6da287a19541994319afbbe6d6202af001ffd379213",
+      "repo": "moonshotai/Kimi-K3"
+    },
+    {
+      "id": "base-card",
+      "label": "基模模型卡",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3/blob/f831ab66814297da540d832a5235f8e904f29d06/README.md",
+      "revision": "f831ab66814297da540d832a5235f8e904f29d06"
+    },
+    {
+      "id": "tiny",
+      "label": "Collection tiny 配置",
+      "url": "https://huggingface.co/tiny-random/kimi-k3/blob/30ed905ca0110a15c3a180542966e2d259349b20/config.json",
+      "revision": "30ed905ca0110a15c3a180542966e2d259349b20",
+      "local": "sources/models/kimi-k3/tiny.config.json",
+      "sha256": "6347d3d4e6141113b8c6e68a1035bc45decacbfaae41efb0be5529bfacae5c83",
+      "repo": "tiny-random/kimi-k3",
+      "collection_member": true
+    },
+    {
+      "id": "tiny-card",
+      "label": "tiny 构造说明",
+      "url": "https://huggingface.co/tiny-random/kimi-k3/blob/30ed905ca0110a15c3a180542966e2d259349b20/README.md",
+      "revision": "30ed905ca0110a15c3a180542966e2d259349b20"
+    },
+    {
+      "id": "code",
+      "label": "实现参考（非本次执行）",
+      "url": "https://huggingface.co/moonshotai/Kimi-K3/blob/f831ab66814297da540d832a5235f8e904f29d06/modeling_kimi_linear.py"
+    }
+  ],
+  "variants": {
+    "base": {
+      "label": "指定基模",
+      "dimensions": {
+        "layers": 93,
+        "hidden": 7168,
+        "vocab": 163840,
+        "experts": 896,
+        "top_k": 16,
+        "expert_width": 3072,
+        "q_heads": 96,
+        "kv_heads": 96,
+        "shared": 2,
+        "context": 1048576,
+        "tied": false,
+        "streams": 1,
+        "stream_hidden": 7168
+      },
+      "attention_schedule": [
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "gated MLA"
+      ],
+      "ffn_schedule": [
+        "Dense",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE"
+      ],
+      "config_source": "base"
+    },
+    "tiny": {
+      "label": "Collection tiny 参考",
+      "dimensions": {
+        "layers": 17,
+        "hidden": 8,
+        "vocab": 163840,
+        "experts": 64,
+        "top_k": 16,
+        "expert_width": 256,
+        "q_heads": 8,
+        "kv_heads": 8,
+        "shared": 2,
+        "context": 1048576,
+        "tied": false,
+        "streams": 1,
+        "stream_hidden": 8
+      },
+      "attention_schedule": [
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "gated MLA",
+        "gated MLA"
+      ],
+      "ffn_schedule": [
+        "Dense",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE",
+        "LatentMoE"
+      ],
+      "config_source": "tiny"
+    }
+  },
+  "evidence": "配置与实现核对；非执行轨迹",
+  "has_trace": false,
+  "category": "线性混合",
+  "modalities": [
+    "文本",
+    "图像",
+    "视频"
+  ],
+  "summary": "KDA + gated MLA，配合深度 Attention Residuals 与 Stable LatentMoE；三部分都不能套用 GLM。",
+  "pattern": "69 × KDA + 24 × gated MLA",
+  "tiny_status": "目标同名 tiny · 含实现 patch",
+  "tiny_note": "tiny为17层、H8、64/top16、latent256，因此latent投影实际扩维；基模H7168→3584才是降维。tiny对官方代码做兼容patch；不是未经修改源码的逐算子等价副本。",
+  "highlights": [
+    "末两层都是MLA；full_attn_layers采用1-based索引",
+    "AttnRes在深度block轴加权，不是mHC四路",
+    "Router读取原H；routed专家在latent空间；shared留在原H"
+  ],
+  "input": "文本embedding；MoonViT3D27层/H1024/patch14/QKVhidden1536 → PatchMergerMLPV2（2×2空间、sd2_tpool时间）→语言H7168。",
+  "norm": "AttnRes先对候选深度状态RMSNorm打分；latent routed aggregate再次RMSNorm后投影回H；末端还有output AttnRes与final RMSNorm。",
+  "position": "官方reference MLA设置rotary_emb=None，未应用RoPE。即使config有qk_rope_head_dim64，也不能据此画出旋转算子；实际QK维度为128+64=192。",
+  "residual": {
+    "title": "Attention Residuals · depth blocks",
+    "summary": "对前序深度block摘要和当前block prefix sum做可学习加权，沿深度轴softmax。",
+    "steps": [
+      "收集depth block summaries + current prefix",
+      "候选逐个RMSNorm",
+      "独立learned residual projection产生score",
+      "softmax over depth blocks",
+      "加权组合 →当前子层",
+      "更新本轮token的深度候选"
+    ],
+    "equations": [
+      "α = softmax_depth(proj(RMSNorm(depth_candidates)))",
+      "x = Σdepth αᵢ · candidateᵢ"
+    ],
+    "notes": [
+      "基模block_size12，tiny8；attention/FFN分别有自己的residual投影。",
+      "这些深度候选在每次前向重建，不是跨token缓存；没有固定4-stream轴。"
+    ],
+    "sources": [
+      "base",
+      "code"
+    ]
+  },
+  "output": "output AttnRes聚合 → final RMSNorm → LM head163840。num_nextn_predict_layers=0。",
+  "prefill": "KDA chunk模式与MLA因果全注意力交替；各token独立形成AttnRes的深度候选。基模最后两层均为MLA。",
+  "decode": "KDA在use_cache且q_len=1时走recurrent；reference MLA追加展开后的K/V。每次前向重建当前token的AttnRes深度状态。",
+  "extra": "Stable LatentMoE的router读取原始H；shared branch也在原始H，只有routed branch投影到latent空间。不要把所有专家一并放进latent。",
+  "mtp": "指定配置num_nextn_predict_layers=0；不额外绘制未声明的MTP。",
+  "attention": {
+    "KDA": {
+      "title": "KDA · separate short convolutions",
+      "summary": "独立Q/K/V projection与3个conv4，不同于GLM的拼接卷积边界。",
+      "steps": [
+        "Q/K/V各自projection",
+        "各自short conv4 +SiLU",
+        "Q/K L2Norm",
+        "per-channel gated delta recurrence",
+        "RMSNorm×sigmoid(full-rank g_proj)",
+        "O projection"
+      ],
+      "equations": [
+        "state:[B,96,128,128] (base)",
+        "Q/K/V各自conv窗口；reference transpose_state_layout=True"
+      ],
+      "notes": [
+        "轴语义不可只凭同样的数值形状套GLM实现。",
+        "输出gate为full-rank投影，不是GLM低秩g_a/g_b。"
+      ],
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "gated MLA": {
+      "title": "Gated Multi-head Latent Attention · NoPE",
+      "summary": "Q/KV低秩投影，reference先展开K/V再缓存；不运行稀疏索引器。",
+      "steps": [
+        "Q low-rank1536 →heads",
+        "KV low-rank512 →K/V expansion",
+        "append expanded K/V cache",
+        "NoPE causal softmax attention",
+        "×sigmoid(g_proj(x))",
+        "O projection"
+      ],
+      "equations": [
+        "Q/K head=128+64=192; V head=128",
+        "reference K:[B,96,L,192]; V:[B,96,L,128]"
+      ],
+      "notes": [
+        "不得将reference缓存标为latent压缩cache；优化引擎可另选存储布局。",
+        "rotary_emb=None；没有DSA raw-index mask。"
+      ],
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "moe": {
+    "title": "Stable LatentMoE + original-H shared",
+    "summary": "L0 Dense，之后896专家选16；shared有2个，不占top16。",
+    "steps": [
+      "同一输入分成并行分支",
+      "各分支独立计算（下图）",
+      "routed output + shared output →当前模型的FFN residual更新"
+    ],
+    "equations": [
+      "SiTU gate =4·tanh(gate/4)·sigmoid(gate)",
+      "up̃ =25·tanh(up/25)",
+      "Σ selected sigmoid weights =1.0"
+    ],
+    "notes": [
+      "tiny routed维256大于H8，属于扩维；不要自动标注“压缩一半”。",
+      "只有routed分支用latent；router和shared读取原始H。",
+      "Router的ID/weights控制routed专家分支；原始H同时送入专家投影。Router输出不是送给shared的输入，也不直接加到最终hidden。"
+    ],
+    "sources": [
+      "base",
+      "code"
+    ],
+    "routing_steps": [
+      "读取原H（非latent）",
+      "FP32 linear →sigmoid",
+      "score+bias选择top16",
+      "原score[ids]归一化×1.0"
+    ],
+    "branches": [
+      {
+        "title": "ROUTER · from original H",
+        "steps": [
+          "读取原H（非latent）",
+          "FP32 linear →sigmoid",
+          "score+bias选择top16",
+          "原score[ids]归一化×1.0"
+        ]
+      },
+      {
+        "title": "ROUTED EXPERTS · from X",
+        "steps": [
+          "原H→latent",
+          "按Router IDs执行SiTU experts",
+          "按Router weights聚合latent",
+          "RMSNorm→project回H"
+        ]
+      },
+      {
+        "title": "SHARED / ORIGINAL H",
+        "steps": [
+          "原始H输入",
+          "2个shared SiTU experts",
+          "返回H空间"
+        ]
+      }
+    ],
+    "merge": "routed output + shared output →当前模型的FFN residual更新"
+  },
+  "states": [
+    {
+      "name": "KDA Q/K/V convolution",
+      "base_shape": "三路 [B,96×128,4]",
+      "tiny_shape": "三路 [B,1024,4]",
+      "growth": "固定窗口",
+      "detail": "官方短卷积为独立Q/K/V；不能套GLM拼接卷积的边界。"
+    },
+    {
+      "name": "KDA recurrent",
+      "base_shape": "[B,96,128,128]",
+      "tiny_shape": "[B,8,128,128]",
+      "growth": "固定",
+      "detail": "reference transpose_state_layout=True；相同维度不代表相同轴语义。"
+    },
+    {
+      "name": "MLA reference expanded K",
+      "base_shape": "[B,96,L,192]",
+      "tiny_shape": "[B,8,L,192]",
+      "growth": "随L增长",
+      "detail": "官方reference先展开再缓存；不是[B,L,512]压缩latent存储。"
+    },
+    {
+      "name": "MLA reference expanded V",
+      "base_shape": "[B,96,L,128]",
+      "tiny_shape": "[B,8,L,128]",
+      "growth": "随L增长",
+      "detail": "优化引擎可用不同cache布局，不冒充本站已实测。"
+    },
+    {
+      "name": "Attention Residual candidates",
+      "base_shape": "depth blocks × [B,T,7168]",
+      "tiny_shape": "depth blocks × [B,T,8]",
+      "growth": "当前前向深度状态",
+      "detail": "每次forward重建；不跨token缓存。"
+    }
+  ],
+  "comparison": {
+    "input": {
+      "signature": "文本,图像,视频:kimi-k3",
+      "title": "文本 / 图像 / 视频",
+      "detail": "文本embedding；MoonViT3D27层/H1024/patch14/QKVhidden1536 → PatchMergerMLPV2（2×2空间、sd2_tpool时间）→语言H7168。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "attention": {
+      "signature": "kda-mla",
+      "title": "69 × KDA + 24 × gated MLA",
+      "detail": "KDA + gated MLA，配合深度 Attention Residuals 与 Stable LatentMoE；三部分都不能套用 GLM。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "position": {
+      "signature": "nope",
+      "title": "官方reference MLA设置rotary_emb=None，未应用RoPE。即使config有qk_rope_head_dim64，也不能据此画出旋转算子",
+      "detail": "官方reference MLA设置rotary_emb=None，未应用RoPE。即使config有qk_rope_head_dim64，也不能据此画出旋转算子；实际QK维度为128+64=192。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "normalization": {
+      "signature": "kimi-k3-norm",
+      "title": "归一化位置与参数化",
+      "detail": "AttnRes先对候选深度状态RMSNorm打分；latent routed aggregate再次RMSNorm后投影回H；末端还有output AttnRes与final RMSNorm。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "residual": {
+      "signature": "attnres",
+      "title": "Attention Residuals · depth blocks",
+      "detail": "对前序深度block摘要和当前block prefix sum做可学习加权，沿深度轴softmax。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "routing": {
+      "signature": "sigmoid-scale1",
+      "title": "Stable LatentMoE + original-H shared",
+      "detail": "读取原H（非latent） → FP32 linear →sigmoid → score+bias选择top16 → 原score[ids]归一化×1.0",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "experts": {
+      "signature": "situ-latent:(896, 16, 3072)",
+      "title": "896 专家选 16 · width 3072",
+      "detail": "L0 Dense，之后896专家选16；shared有2个，不占top16。 tiny routed维256大于H8，属于扩维；不要自动标注“压缩一半”。 只有routed分支用latent；router和shared读取原始H。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "shared": {
+      "signature": "shared-original-h",
+      "title": "2个shared expert留在原始H，routed branch才进入latent",
+      "detail": "shared不参与routed top-k；此行按实际分支语义对齐。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "state": {
+      "signature": "kda-mla-cache",
+      "title": "KDA Q/K/V convolution / KDA recurrent / MLA reference expanded K / MLA reference expanded V / Attention Residual candidates",
+      "detail": "KDA Q/K/V convolution: 固定窗口；KDA recurrent: 固定；MLA reference expanded K: 随L增长；MLA reference expanded V: 随L增长；Attention Residual candidates: 当前前向深度状态",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "prefill": {
+      "signature": "kda-mla-prefill",
+      "title": "Prompt并行前向",
+      "detail": "KDA chunk模式与MLA因果全注意力交替；各token独立形成AttnRes的深度候选。基模最后两层均为MLA。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "decode": {
+      "signature": "kda-mla-decode",
+      "title": "单token状态推进",
+      "detail": "KDA在use_cache且q_len=1时走recurrent；reference MLA追加展开后的K/V。每次前向重建当前token的AttnRes深度状态。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "output": {
+      "signature": "attnres-head",
+      "title": "output AttnRes聚合 → final RMSNorm → LM head163840",
+      "detail": "output AttnRes聚合 → final RMSNorm → LM head163840。num_nextn_predict_layers=0。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "auxiliary": {
+      "signature": "kimi-k3-aux",
+      "title": "可选模块与不执行的分支",
+      "detail": "Stable LatentMoE的router读取原始H；shared branch也在原始H，只有routed branch投影到latent空间。不要把所有专家一并放进latent。 指定配置num_nextn_predict_layers=0；不额外绘制未声明的MTP。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "indexer": {
+      "signature": "none",
+      "title": "MLA层无稀疏索引器",
+      "detail": "KDA依赖递归；gated MLA为因果全注意力，未应用DSA/QSA索引mask。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "gating": {
+      "signature": "vector-fullrank",
+      "title": "KDA逐通道衰减 + full-rank输出门",
+      "detail": "KDA使用full-rank g_proj；MLA输出也乘sigmoid gate。与GLM低秩gate不同。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "limitations": [
+    "本站结构页展示配置与源码级数据流，没有为此基模采集token、激活、路由权重或logits。",
+    "同名功能按语义阶段对齐，不将不同深度的层号一一等价，也不把稀疏可见性当成所有后端的物理内存或性能结论。"
+  ]
+}

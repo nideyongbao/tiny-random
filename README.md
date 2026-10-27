@@ -1,61 +1,116 @@
-# tiny-random · Execution Atlas
+# tiny-random · MoE Architecture Atlas
 
-用真实执行记录解释一次生成的静态原型。入口是 GLM-5.3-Flash 的 tiny checkpoint，包含输入模板、token、8 层前向、KDA / DSA / mHC / FFN、缓存与专家路由、逐算子元信息，以及数值验证结果。右上角保留上一版配置级架构对比。
+九个指定 MoE 模型的架构目录、正向数据流与可交互对比。基模是解释对象；Collection 中的小模型作为独立参考，不把 tiny 尺寸当作基模参数。
 
-## 浏览
+站点采用 **Python 标准库构建 + 原生 HTML/CSS/JS**：没有前端框架、数据库或线上模型 API。仓库保存配置、审核后的结构说明和少量执行记录，不保存权重。
+
+## 页面组织
+
+部署目标为 `https://nideyongbao.github.io/tiny-random/`。这只是预期地址，须在仓库权限与 Pages 配置就绪、workflow 成功后才会上线。
+
+| 路径 | 内容 |
+| --- | --- |
+| `/tiny-random/` | 九模型目录；按家族、注意力类型和关键词筛选 |
+| `/tiny-random/families/qwen/` 等 | 7 个家族子页面 |
+| `/tiny-random/models/<model-id>/` | 单模型概览、逐层正向、注意力/专家、状态、原始配置与来源 |
+| `/tiny-random/compare/` | 任选 2–4 个基模，按功能阶段比较；只看不同、prefill/decode、可分享链接 |
+| `/tiny-random/execution.html` | GLM tiny 的真实 CPU/FP32 执行回放与数值诊断 |
+| `/tiny-random/architecture.html` | 保留的早期 GLM 配置级概览 |
+
+所有模型页都是实际生成的目录与 `index.html`，不依赖 SPA 重写或服务端路由。静态资源与配置使用相对路径，部署在项目子路径也能访问。
+
+## 收录范围与分类
+
+| 模型 | 正向结构要点 | tiny 关联 |
+| --- | --- | --- |
+| Qwen3 30B-A3B | 全 GQA；softmax MoE；标准残差 | 同家族235B来源，非目标精确缩小版 |
+| Qwen3.5 35B-A3B | GDN×3 + gated GQA；gated shared expert | 同家族397B来源；expert/top-k不同 |
+| Gemma 4 26B-A4B | sliding/global GQA；Dense与MoE并行；logit softcap | 同规格-it来源，tiny改变层周期 |
+| DeepSeek V4-Pro | HCA/CSA；压缩历史；前三层HashMoE；mHC | Pro来源tiny，明确不混入bf16变体 |
+| MiMo-V2.5-Pro | 纯文本；SWA/global；不等宽QK/V；局部sink | 本次集合快照未找到对应tiny |
+| GLM-5.3-Flash | KDA/DSA；mHC；最终mean collapse | 有tiny真实轨迹，保留checkpoint数值异常 |
+| MiniMax M3 | MSA按GQA group选历史块；top4+shared | 未找到精确M3，不替换为H3或M3.1 |
+| Kimi K3 | KDA/gated MLA；AttnRes；Stable LatentMoE | 同名tiny含兼容patch；latent在tiny中实际扩维 |
+| Qwen3.8-Flash-Next | GDN/QSA；gated HC；hashed PLE | 同名tiny；官方model_type=qwen4_exp |
+
+资料核对日期：2026-10-27。每个模型档案包含固定的官方配置revision、实现引用、SHA256与tiny来源说明。集合成员快照在 `sources/collection.json`。
+
+## GitHub Pages 发布
+
+工作流文件：`.github/workflows/pages.yaml`。
+
+参考了用户指定的 [InfraTech Pages workflow](https://github.com/CalvinXKY/InfraTech/blob/main/.github/workflows/pages.yml)，采用 checkout → 构建校验 → upload-pages-artifact → deploy-pages 的官方流程；构建与部署分成两个 job。
+
+1. 将本目录作为仓库根目录推送到 `nideyongbao/tiny-random` 的 `main`。`.github/` 需要位于 Git 仓库根，不能额外套一层 `prototype/`。
+2. 在仓库 **Settings → Pages → Build and deployment → Source** 选择 **GitHub Actions**。此设置需要仓库管理权限；工作流没有使用 PAT 或自定义 secrets。
+3. 推送相关文件到 `main`，或在 Actions 手动运行 **Build and deploy tiny-random architecture atlas**。
+4. 等待 build/deploy 成功；以 deployment 输出的 `page_url` 为实际地址。
+
+权限仅在部署 job 增加 `pages: write` 与 `id-token: write`。PR只构建和校验，不部署；同一ref的新任务可取消旧任务。构建时不下载上游模型、权重或Python推理依赖。
+
+当前已配置本地 `origin`，但本次环境访问目标仓库仍返回认证错误，GitHub连接器也返回404，因此不能把本地完成等同于线上发布。仓库可见性、写权限与Pages启用状态仍须在GitHub侧就绪。
+
+官方参考：[GitHub Pages 自定义 workflow](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
+
+## 本地构建与预览
+
+需要 Python 3.10+；不需要安装任何Python包。Node仅用于JavaScript语法检查，可选浏览器QA需要Playwright。
 
 ```sh
+python3 build_site.py
+python3 scripts/check_site.py
+python3 check_trace.py
+node --check dist/assets/atlas.js
 python3 -m http.server 8765 --directory dist
 ```
 
-打开 `http://localhost:8765`。纯 HTML / CSS / JS，无构建步骤；资源为相对路径，`dist/` 可部署到 GitHub Pages。当前预览与远程源码由 Sites 管理，本仓库尚未配置 GitHub Pages 自动发布。
+打开 `http://localhost:8765/`。本次还额外在 `/tiny-random/` 挂载路径做过浏览器验证，防止根路径可用但GitHub项目站点404。
 
-建议先查看输入模板，再依次点击 Prefill 和 Decode；在数据流中选层、选视图、点节点查看 tensor，再进入算子显微镜追溯输入来源。状态页可切换每个 query token 的 MoE 路由与 DSA 索引。
-
-## 记录是真实的，但有明确边界
-
-- checkpoint revision：`aeb642e89f4bb6b55b186ca440edff0acb9ee9f5`。
-- 执行条件：CPU、FP8 checkpoint 反量化后全参数转 FP32、eager attention、PyTorch KDA/conv fallback；不是原生 FP8 GPU 后端。
-- 固定 prompt `请用一句话介绍你自己。` 经原生模板得到 18 个 token；greedy 生成 4 个 token：`Recovered 分析 użyiles`。随机输出保持原样。
-- 4 次前向，每次 216 个模块记录；prefill 9,306 个、每次 decode 3,967 个 ATen events，共 21,207 个。不同实现版本可能改变这些计数。
-- 模块边界保留前两个 tensor 输入、前三个 tensor 输出的数值采样，以及所有 tensor ID。函数边界保留采样与 keyword inputs。参数值被排除。
-- 数值采样为前 24 个标量、leading 8×12 tile、末行前 24 个标量。统计量覆盖全张量；不是完整 tensor dump。MoE 路由、DSA indices 和 head 0 attention 对本例完整保存。
-- 所有被捕获的 ATen events 有输入输出 tensor ID、形状、dtype、常量、参数名和模块 scope。它们不是 GPU kernel / 硬件指令；一个 ATen event 可封装多个底层计算。
-- `v` 是记录器对同一 tensor 对象再次返回的逻辑版本，不是 PyTorch storage version。跨对象共享 storage 的别名写入没有完整建模；不能将该视图当作内存别名分析器。
-- Vision / MTP / backward 未执行。MTP 辅助 layer 8 的 26 个键被加载器忽略，实际主干层为 0–7。
-- 固定示例离线回放；浏览器不加载权重，也不接受任意 prompt 推理。
-
-## 上游 checkpoint 的数值问题
-
-带记录器和不带记录器的相同 cached 路径，4 步 logits 完全一致。但 cached decode 与完整序列重算在后三步没有通过 `rtol=1e-3, atol=1e-4`，最大差分别约 `0.038385 / 0.035868 / 0.006497`；argmax 相同。
-
-审计发现 routed experts 的 576 个尺度 tensor（9,216 元素，包含 MTP）全部为 1.0，而其他量化尺度约为 `0.000119–0.000225`。上游模型卡先 pack 拆分后的专家权重，再 pack 所有二维 `.weight`，覆盖第一次尺度。重复 pack 的最小实验也能复现。第一层 MoE 放大了此前极小的 FP32 差异。没有修改权重或猜测丢失的原尺度；页面以明确诊断标记保留实际执行。
-
-证据：`dist/trace/numerical-audit.json`；复现尺度检查：`audit_checkpoint.py`；原始生成脚本见 [pinned 模型卡](https://huggingface.co/tiny-random/glm-5.3-flash/blob/aeb642e89f4bb6b55b186ca440edff0acb9ee9f5/README.md#L203)。
-
-## 复现采集
-
-将上述 revision 的 checkpoint 与 tokenizer 下载到仓库外的临时目录，然后在隔离 Python 环境安装 `requirements-trace.txt`。不要将权重放入仓库。
+可选浏览器检查：
 
 ```sh
-python capture_trace.py --model-dir /path/to/pinned/checkpoint
-python audit_checkpoint.py --model-dir /path/to/pinned/checkpoint
-python check_trace.py
+# Playwright 已安装且浏览器可用时
+ATLAS_URL=http://localhost:8765/ node scripts/browser_check.cjs
 ```
 
-`capture_trace.py` 使用上游模型实现，通用 module hooks + TorchDispatch 采集，另对四个非模块函数加只读边界记录；不重写模型计算。脚本目前针对这个已固定的示例，不是跨所有架构的自动适配器。更换模型时需要复核解释图及模型特有状态的采集。实现文件 SHA256、依赖版本、后端条件与加载报告一并记录。
+若Playwright安装在其他目录，可用 `PLAYWRIGHT_MODULE=/absolute/path/to/playwright` 指定。此浏览器检查不进入Pages发布依赖。
 
-## 文件与更新
+## 如何更新或增加模型
 
-- `dist/index.html` / `replay.css` / `replay.js`：通用回放界面、交互、该模型的解释图。
-- `dist/trace/session.json`：阶段、模块边界、缓存、路由和输出记录。
-- `dist/trace/ops-*.json`：按阶段懒加载的算子元信息。
-- `dist/architecture.html` / `app.js` / `style.css`：上一版配置级结构对比。
-- `sources/`：原始配置、Safetensors header 与来源清单；无权重。
-- `capture_trace.py` / `audit_checkpoint.py` / `check_trace.py`：采集、诊断和数据一致性检查。
+```text
+catalog/models/<id>.json       唯一维护的结构档案
+sources/models/<id>/           pinned base/tiny原始配置
+site/atlas.js                 所有模型共用的界面与交互
+site/atlas.css                共用样式
+site/shell.html               共用页面外壳
+build_site.py                 生成首页、家族、模型、对比与资源
+scripts/check_site.py         来源/层序列/链接/核心语义校验
+.github/workflows/pages.yaml  CI与Pages部署
+```
 
-交互页面的数值始终来自记录文件；`TRACE` 节点关联真实模块／函数，`CODE` 节点只解释源码，不伪造中间值。增加模型时可以复用界面与数据格式，但需由 agent 审核模型特有图和状态语义。
+更新顺序：
 
-## 已做验证
+1. 用户指定关注的基模或想比较的关键问题。
+2. Agent读取Collection、官方模型卡、配置和实现，固定revision。只下载配置；不把权重加入仓库。
+3. 更新原始配置快照与SHA256，修改对应声明式JSON：层序列、模块说明、状态、功能对比签名、证据与限制。
+4. 构建并检查。目录中的 `TRACE` 与结构页的源码推演不能混淆；缺少某型号tiny时如实记录，不替换为同家族其他型号。
+5. 审阅Git diff后推送。Pages使用已经核对的本地资料构建，不在CI中自动抓取“latest”并猜结构。
 
-真实模型前向与独立 cached replay；完整序列数值诊断；数据记录的一致性断言；Chromium 验证所有图视图／节点、token 查看、算子筛选和来源追溯、专家选择、缓存阶段切换、诊断展示与 390px 手机布局。数值诊断失败项如实保留，不能记作全项通过。
+新增一个模型通常只需新增数据档案与配置快照；家族目录由构建脚本生成。当前校验刻意锁定用户要求的9个模型与核心易错事实，扩展清单时同步更新覆盖断言。具体字段说明见 [catalog/README.md](catalog/README.md)。
+
+`dist/` 是可直接托管的生成目录，保留旧版GLM回放资源。模型JSON和配置在生成时各拷贝一次到站点供浏览器读取，避免为每个页面复制一套模型代码。不要手工修改生成的模型页。
+
+## 正确性与限制
+
+- 新的九模型目录是配置与源码级说明，不声称执行过九个基模或捕获所有激活。长度P只用于张量形状推演。
+- 层序列来自实际配置：MiMo的全局层不是简单七周期，Kimi的MLA列表是1-based，DeepSeek的末尾ratio0是MTP，GLM最后一层是KDA。
+- 对比页按功能阶段对齐，不能把“相同功能签名”理解成参数、数值或性能等价。
+- KV可见窗口、稀疏选择预算、物理缓存分配是不同概念；页面注明具体参考实现和后端差异。
+- tiny参考可以改变专家数、共享分支、层序列、维度与实现。基模和tiny各自的尺寸及局限分开展示。
+- 原有GLM回放保存21,207条ATen元信息和边界数值采样；专家FP8尺度异常导致cached/full检查失败，仍如实显示。复现和诊断详情见 [docs/GLM_TRACE.md](docs/GLM_TRACE.md)。
+
+## 已验证
+
+构建、来源哈希、9模型/7家族路由、真实层序列、tiny关联、15个功能对比维度、相对资源路径、GLM轨迹衔接、JavaScript语法。浏览器覆盖桌面与390px手机、九模型全部标签和节点、配置搜索、2–4模型选择与链接恢复、`/tiny-random/`项目路径及旧GLM回放。
+
+GitHub云端workflow尚未运行；这与本地检查结果分开记录。

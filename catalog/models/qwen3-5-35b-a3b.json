@@ -1,0 +1,501 @@
+{
+  "id": "qwen3-5-35b-a3b",
+  "order": 2,
+  "name": "Qwen3.5 · 35B-A3B",
+  "family": {
+    "id": "qwen",
+    "name": "Qwen"
+  },
+  "reviewed_on": "2026-10-27",
+  "sources": [
+    {
+      "id": "base",
+      "label": "指定基模配置",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-35B-A3B/blob/59d61f3ce65a6d9863b86d2e96597125219dc754/config.json",
+      "revision": "59d61f3ce65a6d9863b86d2e96597125219dc754",
+      "local": "sources/models/qwen3-5-35b-a3b/base.config.json",
+      "sha256": "5e4d7f74fec2f360eb9cfbfcd6ec0c4c76e684d3a11caaed259d9fd9bfbc7944",
+      "repo": "Qwen/Qwen3.5-35B-A3B"
+    },
+    {
+      "id": "base-card",
+      "label": "基模模型卡",
+      "url": "https://huggingface.co/Qwen/Qwen3.5-35B-A3B/blob/59d61f3ce65a6d9863b86d2e96597125219dc754/README.md",
+      "revision": "59d61f3ce65a6d9863b86d2e96597125219dc754"
+    },
+    {
+      "id": "tiny",
+      "label": "Collection tiny 配置",
+      "url": "https://huggingface.co/tiny-random/qwen3.5-moe/blob/2ebfa8d9717238c5dda927008104fa172a149050/config.json",
+      "revision": "2ebfa8d9717238c5dda927008104fa172a149050",
+      "local": "sources/models/qwen3-5-35b-a3b/tiny.config.json",
+      "sha256": "7e0ef0046b09cc4bf323bee65ee2e0ab9796287ecf7f165d69bb8a0772047948",
+      "repo": "tiny-random/qwen3.5-moe",
+      "collection_member": true
+    },
+    {
+      "id": "tiny-card",
+      "label": "tiny 构造说明",
+      "url": "https://huggingface.co/tiny-random/qwen3.5-moe/blob/2ebfa8d9717238c5dda927008104fa172a149050/README.md",
+      "revision": "2ebfa8d9717238c5dda927008104fa172a149050"
+    },
+    {
+      "id": "code",
+      "label": "Transformers 5.20.2 实现",
+      "url": "https://github.com/huggingface/transformers/blob/v5.20.2/src/transformers/models/qwen3_5_moe/modeling_qwen3_5_moe.py",
+      "sha256": "5d6a6d8ee858c992c939bd1069d0396025db551420e4c1acd3479ce691f9c4f5",
+      "version": "5.20.2"
+    }
+  ],
+  "variants": {
+    "base": {
+      "label": "指定基模",
+      "dimensions": {
+        "layers": 40,
+        "hidden": 2048,
+        "vocab": 248320,
+        "experts": 256,
+        "top_k": 8,
+        "expert_width": 512,
+        "q_heads": 16,
+        "kv_heads": 2,
+        "shared": 1,
+        "context": 262144,
+        "tied": false,
+        "streams": 1,
+        "stream_hidden": 2048
+      },
+      "attention_schedule": [
+        "GDN",
+        "GDN",
+        "GDN",
+        "Gated GQA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "Gated GQA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "Gated GQA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "Gated GQA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "Gated GQA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "Gated GQA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "Gated GQA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "Gated GQA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "Gated GQA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "Gated GQA"
+      ],
+      "ffn_schedule": [
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE"
+      ],
+      "config_source": "base"
+    },
+    "tiny": {
+      "label": "Collection tiny 参考",
+      "dimensions": {
+        "layers": 4,
+        "hidden": 8,
+        "vocab": 248320,
+        "experts": 128,
+        "top_k": 10,
+        "expert_width": 32,
+        "q_heads": 8,
+        "kv_heads": 4,
+        "shared": 1,
+        "context": 262144,
+        "tied": false,
+        "streams": 1,
+        "stream_hidden": 8
+      },
+      "attention_schedule": [
+        "GDN",
+        "GDN",
+        "GDN",
+        "Gated GQA"
+      ],
+      "ffn_schedule": [
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE"
+      ],
+      "config_source": "tiny"
+    }
+  },
+  "evidence": "配置与实现核对；非执行轨迹",
+  "has_trace": false,
+  "category": "线性混合",
+  "modalities": [
+    "文本",
+    "图像",
+    "视频"
+  ],
+  "summary": "GatedDeltaNet 与 gated GQA 交替；定长递归状态与增长的 KV cache 并存。",
+  "pattern": "[GDN ×3 → gated GQA] ×10",
+  "tiny_status": "同家族参考 · 来源 397B",
+  "tiny_note": "tiny-random/qwen3.5-moe 的模型卡来自 397B-A17B，不是指定 35B。tiny 为 4 层、128 专家选 10；指定基模为 40 层、256 专家选 8。",
+  "highlights": [
+    "30 层 GDN + 10 层 gated GQA",
+    "GDN 输出门用 SiLU；GQA 输出门用 sigmoid",
+    "每层 routed MoE + 独立 sigmoid-gated shared expert"
+  ],
+  "input": "文本 embedding；图像／视频按原生 processor 生成视觉占位与位置。视觉分支为 Conv3D patch embedding → 27 层 ViT → 2×2 spatial merger → H2048，替换视觉占位的 embedding。纯文本跳过视觉分支。",
+  "norm": "主干使用 zero-centered RMSNorm：归一化后乘 (1+w)。GDN 输出再按 head RMSNorm；完整注意力的 Q/K 各自 RMSNorm。",
+  "position": "GDN 不用 RoPE；GQA 仅旋转 25% head 维度，使用 interleaved MRoPE，theta=1e7。",
+  "residual": {
+    "title": "普通单路 residual",
+    "summary": "与 Qwen3 一样是两次单路 residual，但 norm 权重采用 1+w。",
+    "steps": [
+      "zero-centered RMSNorm",
+      "GDN / gated GQA",
+      "residual add",
+      "zero-centered RMSNorm",
+      "routed + gated shared MoE",
+      "residual add"
+    ],
+    "equations": [
+      "X₁ = X + Attention(Norm₁(X))",
+      "X₂ = X₁ + MoE(Norm₂(X₁))"
+    ],
+    "notes": [],
+    "sources": [
+      "base",
+      "code"
+    ]
+  },
+  "output": "最终 zero-centered RMSNorm → 不绑定的 LM head。MTP 是可选辅助预测路径，普通自回归不默认执行。",
+  "prefill": "GDN 对 prompt 使用 chunk 形式的 gated-delta recurrence，并保留最终卷积窗口和状态；GQA 层对所有 query 计算因果注意力。",
+  "decode": "GDN 更新一个 token 的卷积窗口与递归矩阵；GQA 追加 K/V，查询历史。一次前向中两种状态并存。",
+  "extra": "视觉编码器只在有图像／视频输入时执行；本页为源码级符号数据流，没有视觉激活或真实路由值。",
+  "mtp": "配置声明 1 个辅助 MTP 层；与普通 next-token 前向分开。",
+  "attention": {
+    "GDN": {
+      "title": "GatedDeltaNet",
+      "summary": "标量衰减 g 对每个 value head 单独设置；不是 KDA 的逐通道衰减。",
+      "steps": [
+        "QKV projection",
+        "depthwise causal conv4 + SiLU",
+        "q=L2Norm(q)/√Dk; k=L2Norm(k); head repeat",
+        "β=sigmoid(b), g=-exp(A_log)*softplus(a+dt_bias)",
+        "gated delta recurrence",
+        "head RMSNorm × SiLU(z)",
+        "output projection"
+      ],
+      "equations": [
+        "q = L2Norm(q) / √Dk; k = L2Norm(k)",
+        "S̃ = exp(g) · Sprev",
+        "δ = β · (v − kᵀ S̃)",
+        "Snew = S̃ + k ⊗ δ; y = qᵀ Snew"
+      ],
+      "notes": [
+        "基模 16 个 key heads / 32 个 value heads；key 重复 2 次。g 为每个 value head 的标量。"
+      ],
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "Gated GQA": {
+      "title": "Gated full GQA",
+      "summary": "这是完整因果 GQA，不做 QSA 稀疏选择。",
+      "steps": [
+        "Q + output gate projection",
+        "K/V projection",
+        "Q/K RMSNorm + 25% MRoPE",
+        "K/V cache update",
+        "KV按query group逻辑广播（cache仍2heads）",
+        "causal GQA softmax @ V",
+        "× sigmoid(output gate)",
+        "O projection"
+      ],
+      "equations": [
+        "Q:[B,16,T,256]; K,V:[B,2,L,256]",
+        "Y = Wo(concat(Attention(Q,K,V) ⊙ sigmoid(z)))"
+      ],
+      "notes": [],
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "moe": {
+    "title": "Softmax MoE + gated shared",
+    "summary": "路由分支与共享分支并行；共享专家不占 top-k 名额。",
+    "steps": [
+      "同一输入分成并行分支",
+      "各分支独立计算（下图）",
+      "routed output + shared output →当前模型的FFN residual更新"
+    ],
+    "equations": [
+      "yrouted = Σ wᵢ Expertᵢ(x)",
+      "yshared = sigmoid(wgate x) · SharedMLP(x)",
+      "y = yrouted + yshared"
+    ],
+    "notes": [
+      "基模 256/top8，expert/shared intermediate 均为 512；tiny 128/top10，intermediate 为 32。",
+      "Router的ID/weights控制routed专家分支；原始H同时送入专家投影。Router输出不是送给shared的输入，也不直接加到最终hidden。"
+    ],
+    "sources": [
+      "base",
+      "code"
+    ],
+    "routing_steps": [
+      "linear H→E",
+      "FP32 softmax",
+      "top-k →selected-score renorm"
+    ],
+    "branches": [
+      {
+        "title": "ROUTER · from original H",
+        "steps": [
+          "linear H→E",
+          "FP32 softmax",
+          "top-k →selected-score renorm"
+        ]
+      },
+      {
+        "title": "ROUTED EXPERTS · from X",
+        "steps": [
+          "与Router相同的H输入",
+          "按expert IDs执行专家gated MLP",
+          "按Router weights加权求和"
+        ]
+      },
+      {
+        "title": "SHARED BRANCH",
+        "steps": [
+          "同一H输入",
+          "always-on shared gated MLP",
+          "×sigmoid(shared gate)"
+        ]
+      }
+    ],
+    "merge": "routed output + shared output →当前模型的FFN residual更新"
+  },
+  "states": [
+    {
+      "name": "GDN QKV conv state",
+      "base_shape": "[B,8192,4]",
+      "tiny_shape": "[B,512,4]",
+      "growth": "fixed",
+      "detail": "fixed"
+    },
+    {
+      "name": "GDN recurrent state",
+      "base_shape": "[B,32,128,128]",
+      "tiny_shape": "[B,8,32,32]",
+      "growth": "fixed; FP32 configured",
+      "detail": "fixed; FP32 configured"
+    },
+    {
+      "name": "Full GQA K and V (each)",
+      "base_shape": "[B,2,L,256]",
+      "tiny_shape": "[B,4,L,32]",
+      "growth": "linear in L",
+      "detail": "linear in L"
+    }
+  ],
+  "comparison": {
+    "input": {
+      "signature": "文本,图像,视频:qwen3-5-35b-a3b",
+      "title": "文本 / 图像 / 视频",
+      "detail": "文本 embedding；图像／视频按原生 processor 生成视觉占位与位置。视觉分支为 Conv3D patch embedding → 27 层 ViT → 2×2 spatial merger → H2048，替换视觉占位的 embedding。纯文本跳过视觉分支。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "attention": {
+      "signature": "gdn-gqa",
+      "title": "[GDN ×3 → gated GQA] ×10",
+      "detail": "GatedDeltaNet 与 gated GQA 交替；定长递归状态与增长的 KV cache 并存。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "position": {
+      "signature": "mrope-partial",
+      "title": "GDN 不用 RoPE",
+      "detail": "GDN 不用 RoPE；GQA 仅旋转 25% head 维度，使用 interleaved MRoPE，theta=1e7。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "normalization": {
+      "signature": "qwen3-5-35b-a3b-norm",
+      "title": "归一化位置与参数化",
+      "detail": "主干使用 zero-centered RMSNorm：归一化后乘 (1+w)。GDN 输出再按 head RMSNorm；完整注意力的 Q/K 各自 RMSNorm。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "residual": {
+      "signature": "plain-zero-rms",
+      "title": "普通单路 residual",
+      "detail": "与 Qwen3 一样是两次单路 residual，但 norm 权重采用 1+w。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "routing": {
+      "signature": "softmax",
+      "title": "Softmax MoE + gated shared",
+      "detail": "linear H→E → FP32 softmax → top-k →selected-score renorm",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "experts": {
+      "signature": "swiglu:(256, 8, 512)",
+      "title": "256 专家选 8 · width 512",
+      "detail": "路由分支与共享分支并行；共享专家不占 top-k 名额。 基模 256/top8，expert/shared intermediate 均为 512；tiny 128/top10，intermediate 为 32。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "shared": {
+      "signature": "gated-shared",
+      "title": "1个独立sigmoid-gated shared expert",
+      "detail": "shared不参与routed top-k；此行按实际分支语义对齐。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "state": {
+      "signature": "gdn-gqa-cache",
+      "title": "GDN QKV conv state / GDN recurrent state / Full GQA K and V (each)",
+      "detail": "GDN QKV conv state: fixed；GDN recurrent state: fixed; FP32 configured；Full GQA K and V (each): linear in L",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "prefill": {
+      "signature": "gdn-gqa-prefill",
+      "title": "Prompt并行前向",
+      "detail": "GDN 对 prompt 使用 chunk 形式的 gated-delta recurrence，并保留最终卷积窗口和状态；GQA 层对所有 query 计算因果注意力。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "decode": {
+      "signature": "gdn-gqa-decode",
+      "title": "单token状态推进",
+      "detail": "GDN 更新一个 token 的卷积窗口与递归矩阵；GQA 追加 K/V，查询历史。一次前向中两种状态并存。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "output": {
+      "signature": "zero-rms-lm",
+      "title": "最终 zero-centered RMSNorm → 不绑定的 LM head",
+      "detail": "最终 zero-centered RMSNorm → 不绑定的 LM head。MTP 是可选辅助预测路径，普通自回归不默认执行。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "auxiliary": {
+      "signature": "qwen3-5-35b-a3b-aux",
+      "title": "可选模块与不执行的分支",
+      "detail": "视觉编码器只在有图像／视频输入时执行；本页为源码级符号数据流，没有视觉激活或真实路由值。 配置声明 1 个辅助 MTP 层；与普通 next-token 前向分开。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "indexer": {
+      "signature": "none",
+      "title": "GQA层无稀疏索引器",
+      "detail": "线性层依靠递归状态，不是top-k选择历史token；完整GQA仍看全部历史。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "gating": {
+      "signature": "scalar-silu",
+      "title": "GDN标量衰减 + SiLU输出门",
+      "detail": "g=-exp(A_log)*softplus(a+dt_bias)，每个value head一个衰减标量；GQA输出门为sigmoid。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "limitations": [
+    "本站结构页展示配置与源码级数据流，没有为此基模采集token、激活、路由权重或logits。",
+    "同名功能按语义阶段对齐，不将不同深度的层号一一等价，也不把稀疏可见性当成所有后端的物理内存或性能结论。"
+  ]
+}

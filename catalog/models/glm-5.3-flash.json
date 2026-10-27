@@ -1,0 +1,529 @@
+{
+  "id": "glm-5.3-flash",
+  "order": 6,
+  "name": "GLM · 5.3-Flash",
+  "family": {
+    "id": "glm",
+    "name": "GLM"
+  },
+  "reviewed_on": "2026-10-27",
+  "sources": [
+    {
+      "id": "base",
+      "label": "指定基模配置",
+      "url": "https://huggingface.co/zai-org/GLM-5.3-Flash/blob/46a050bec13002ad29ee795c16e61cf4fa3c4a9c/config.json",
+      "revision": "46a050bec13002ad29ee795c16e61cf4fa3c4a9c",
+      "local": "sources/models/glm-5.3-flash/base.config.json",
+      "sha256": "bb8f01c42cb92a52ca72e65afb4d5bd8d11aef083cd210e8de25dfb904f23e9f",
+      "repo": "zai-org/GLM-5.3-Flash"
+    },
+    {
+      "id": "base-card",
+      "label": "基模模型卡",
+      "url": "https://huggingface.co/zai-org/GLM-5.3-Flash/blob/46a050bec13002ad29ee795c16e61cf4fa3c4a9c/README.md",
+      "revision": "46a050bec13002ad29ee795c16e61cf4fa3c4a9c"
+    },
+    {
+      "id": "tiny",
+      "label": "Collection tiny 配置",
+      "url": "https://huggingface.co/tiny-random/glm-5.3-flash/blob/aeb642e89f4bb6b55b186ca440edff0acb9ee9f5/config.json",
+      "revision": "aeb642e89f4bb6b55b186ca440edff0acb9ee9f5",
+      "local": "sources/models/glm-5.3-flash/tiny.config.json",
+      "sha256": "e373f4bea4dccd2c657487394359b180987cc030e71ead03296dc5ae25685587",
+      "repo": "tiny-random/glm-5.3-flash",
+      "collection_member": true
+    },
+    {
+      "id": "tiny-card",
+      "label": "tiny 构造说明",
+      "url": "https://huggingface.co/tiny-random/glm-5.3-flash/blob/aeb642e89f4bb6b55b186ca440edff0acb9ee9f5/README.md",
+      "revision": "aeb642e89f4bb6b55b186ca440edff0acb9ee9f5"
+    },
+    {
+      "id": "code",
+      "label": "实现参考（非本次执行）",
+      "url": "https://github.com/huggingface/transformers/blob/v5.20.2/src/transformers/models/glm5_next/modeling_glm5_next.py"
+    }
+  ],
+  "variants": {
+    "base": {
+      "label": "指定基模",
+      "dimensions": {
+        "layers": 45,
+        "hidden": 4096,
+        "vocab": 154880,
+        "experts": 288,
+        "top_k": 8,
+        "expert_width": 2048,
+        "q_heads": 64,
+        "kv_heads": 64,
+        "shared": 1,
+        "context": 1048576,
+        "tied": false,
+        "streams": 4,
+        "stream_hidden": 16384
+      },
+      "attention_schedule": [
+        "KDA",
+        "KDA",
+        "KDA",
+        "DSA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "DSA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "DSA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "DSA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "DSA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "DSA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "DSA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "DSA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "DSA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "DSA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "DSA",
+        "KDA"
+      ],
+      "ffn_schedule": [
+        "Dense",
+        "Dense",
+        "Dense",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE"
+      ],
+      "config_source": "base"
+    },
+    "tiny": {
+      "label": "Collection tiny 参考",
+      "dimensions": {
+        "layers": 8,
+        "hidden": 128,
+        "vocab": 154880,
+        "experts": 32,
+        "top_k": 8,
+        "expert_width": 128,
+        "q_heads": 64,
+        "kv_heads": 64,
+        "shared": 1,
+        "context": 1048576,
+        "tied": false,
+        "streams": 4,
+        "stream_hidden": 512
+      },
+      "attention_schedule": [
+        "KDA",
+        "KDA",
+        "KDA",
+        "DSA",
+        "KDA",
+        "KDA",
+        "KDA",
+        "DSA"
+      ],
+      "ffn_schedule": [
+        "Dense",
+        "Dense",
+        "Dense",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE"
+      ],
+      "config_source": "tiny"
+    }
+  },
+  "evidence": "配置与实现核对；非执行轨迹",
+  "has_trace": true,
+  "category": "线性混合",
+  "modalities": [
+    "文本",
+    "图像",
+    "视频"
+  ],
+  "summary": "KDA + pooled DSA + mHC；已有 tiny 执行回放，可由结构解释进入真实张量与算子。",
+  "pattern": "34 × KDA + 11 × DSA",
+  "tiny_status": "目标同名 tiny · 有诊断轨迹",
+  "tiny_note": "tiny 为8层、H128、32/top8；基模45层、H4096、288/top8。tiny FP8 专家尺度被重复 pack 覆盖，cached/full 数值一致性失败；已有回放如实保留，不视为基模数值验证。",
+  "highlights": [
+    "KDA 逐通道 decay，不等于 GDN 标量 decay",
+    "DSA learned pooling 选 raw token；参考 indexer 未用 RoPE",
+    "mHC Sinkhorn20，最终4路无权 mean"
+  ],
+  "input": "文本 embedding；图像／视频经24层 ViT（H1024、patch14、temporal2、merge2）投影至H4096后插入视觉占位。语言激活复制为[B,T,4,H] streams。",
+  "norm": "mHC先 collapse，再进attention/FFN自己的RMSNorm；KDA输出使用RMSNorm×sigmoid gate。",
+  "position": "该配置主 DSA 的 qk_rope_head_dim=0；参考 indexer 也未调用 RoPE，不能因为布尔配置名就画出 RoPE 运算。",
+  "residual": {
+    "title": "mHC · 4 streams + Sinkhorn20",
+    "summary": "Attention/FFN分别拥有pre/post/comb，保留四路残差。",
+    "steps": [
+      "4H flatten → RMSNorm → linear24",
+      "pre=sigmoid+ε / post=2sigmoid",
+      "comb softmax+ε → Sinkhorn20",
+      "pre加权collapse → 子层",
+      "post×子层 + combᵀ×原streams"
+    ],
+    "equations": [
+      "Xnew = post ⊙ block(RMSNorm_sub(Σ preᵢ Xᵢ)) + combᵀ X"
+    ],
+    "notes": [
+      "stream是层间激活，不是自回归cache。",
+      "collapse之后还有独立的attention/FFN子层RMSNorm，再进入子层计算。"
+    ],
+    "sources": [
+      "base",
+      "code"
+    ]
+  },
+  "output": "HyperHead 对4路做无权 mean → RMSNorm → 可选last-position slice → LM head154880。普通AR不执行MTP。",
+  "prefill": "KDA用chunk参考实现；DSA按query可见前缀产生因果稀疏mask。已有tiny CPU eager记录会先物化scores再加mask。",
+  "decode": "KDA更新conv与递归矩阵；DSA延长normalized latent与indexer packed cache，再为本轮query选池与尾部。",
+  "extra": "已有执行回放为CPU/FP32反量化参考后端，固定18-token prompt；不是基模FP8 GPU性能或数值轨迹。",
+  "mtp": "配置1个MTP辅助层；普通AR不执行。基模末层L44是KDA，不是完整12组3:1。",
+  "attention": {
+    "KDA": {
+      "title": "Kimi Delta Attention · GLM implementation",
+      "summary": "64 heads×128；逐通道衰减g。输出gate是低秩两层投影。",
+      "steps": [
+        "Q/K/V projection → concat",
+        "depthwise causal conv4 + SiLU",
+        "Q/K L2Norm；Q/√128",
+        "forget gate + sigmoid β",
+        "chunk / recurrent delta rule",
+        "RMSNorm × sigmoid(g_b(g_a(x)))",
+        "O projection"
+      ],
+      "equations": [
+        "S̃ = exp(g)[..., :, None] ⊙ Sprev",
+        "δ = β ⊙ (v − kᵀS̃); Snew=S̃+k⊗δ",
+        "g = −5·sigmoid(exp(A_log)·(f_b(f_a(x))+dt_bias))"
+      ],
+      "notes": [],
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "DSA": {
+      "title": "Pooled DSA over low-rank KV",
+      "summary": "主干采用压缩latent cache，索引器选raw token位置。",
+      "steps": [
+        "Q low-rank →64heads",
+        "KV latent norm →cache →KV expansion",
+        "index Q/K + compression gate + APE",
+        "4-token weighted pooling →head score aggregation",
+        "top pools →raw indices +≤3tail",
+        "causal sparse mask →attention →O"
+      ],
+      "equations": [
+        "base QK head256=NoPE256+RoPE0; V256",
+        "tiny QK head32=NoPE32+RoPE0; V256",
+        "indexer:32heads×128; raw budget2048(base)/128(tiny)+3"
+      ],
+      "notes": [
+        "indexer_keys 打包 key128+gate128+valid1，共257维。",
+        "DSA cache.values为末维0的空rotary key，不是展开后的V。"
+      ],
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "moe": {
+    "title": "Sigmoid MoE + shared",
+    "summary": "前三层Dense；之后288专家选8，另加1共享专家。",
+    "steps": [
+      "同一输入分成并行分支",
+      "各分支独立计算（下图）",
+      "routed output + shared output →当前模型的FFN residual更新"
+    ],
+    "equations": [
+      "w = sigmoid(logits)[ids]/Σsigmoid(logits)[ids] ×2.5",
+      "expert(x)=Wdown(SiLU(clamp(gate,max10)) ⊙ clamp(up,−10,10))"
+    ],
+    "notes": [
+      "tiny对应32/top8，先3Dense再5MoE。shared不计入top8。",
+      "Router的ID/weights控制routed专家分支；原始H同时送入专家投影。Router输出不是送给shared的输入，也不直接加到最终hidden。"
+    ],
+    "sources": [
+      "base",
+      "code"
+    ],
+    "routing_steps": [
+      "FP32 linear →sigmoid",
+      "score+bias选择top8",
+      "取原score[ids]归一化×2.5"
+    ],
+    "branches": [
+      {
+        "title": "ROUTER · from original H",
+        "steps": [
+          "FP32 linear →sigmoid",
+          "score+bias选择top8",
+          "取原score[ids]归一化×2.5"
+        ]
+      },
+      {
+        "title": "ROUTED EXPERTS · from X",
+        "steps": [
+          "与Router相同的H输入",
+          "按expert IDs执行专家gated MLP",
+          "按Router weights加权求和"
+        ]
+      },
+      {
+        "title": "SHARED BRANCH",
+        "steps": [
+          "同一H输入",
+          "always-on shared gated MLP"
+        ]
+      }
+    ],
+    "merge": "routed output + shared output →当前模型的FFN residual更新"
+  },
+  "states": [
+    {
+      "name": "KDA convolution",
+      "base_shape": "[B,24576,4]",
+      "tiny_shape": "[B,24576,4]",
+      "growth": "固定",
+      "detail": "保存卷积前raw投影QKV最后4位置。"
+    },
+    {
+      "name": "KDA recurrent",
+      "base_shape": "[B,64,128,128]",
+      "tiny_shape": "[B,64,128,128]",
+      "growth": "固定 · FP32",
+      "detail": "历史被写入递归矩阵；基模与tiny在这一分支保留同样head维度。"
+    },
+    {
+      "name": "DSA normalized latent",
+      "base_shape": "[B,1,L,512]",
+      "tiny_shape": "[B,1,L,256]",
+      "growth": "随L增长",
+      "detail": "cache.keys；cache.values对应RoPE0空张量。之后再展开主attention K/V。"
+    },
+    {
+      "name": "DSA indexer packed keys",
+      "base_shape": "[B,L,257]",
+      "tiny_shape": "[B,L,257]",
+      "growth": "随L增长",
+      "detail": "128 key +128 gate +1 valid。"
+    },
+    {
+      "name": "mHC streams",
+      "base_shape": "[B,T,4,4096]",
+      "tiny_shape": "[B,T,4,128]",
+      "growth": "当前前向激活",
+      "detail": "不跨decode保存。"
+    }
+  ],
+  "comparison": {
+    "input": {
+      "signature": "文本,图像,视频:glm-5.3-flash",
+      "title": "文本 / 图像 / 视频",
+      "detail": "文本 embedding；图像／视频经24层 ViT（H1024、patch14、temporal2、merge2）投影至H4096后插入视觉占位。语言激活复制为[B,T,4,H] streams。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "attention": {
+      "signature": "kda-dsa",
+      "title": "34 × KDA + 11 × DSA",
+      "detail": "KDA + pooled DSA + mHC；已有 tiny 执行回放，可由结构解释进入真实张量与算子。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "position": {
+      "signature": "nope",
+      "title": "该配置主 DSA 的 qk_rope_head_dim=0",
+      "detail": "该配置主 DSA 的 qk_rope_head_dim=0；参考 indexer 也未调用 RoPE，不能因为布尔配置名就画出 RoPE 运算。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "normalization": {
+      "signature": "glm-5.3-flash-norm",
+      "title": "归一化位置与参数化",
+      "detail": "mHC先 collapse，再进attention/FFN自己的RMSNorm；KDA输出使用RMSNorm×sigmoid gate。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "residual": {
+      "signature": "mhc",
+      "title": "mHC · 4 streams + Sinkhorn20",
+      "detail": "Attention/FFN分别拥有pre/post/comb，保留四路残差。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "routing": {
+      "signature": "sigmoid-scale2.5",
+      "title": "Sigmoid MoE + shared",
+      "detail": "FP32 linear →sigmoid → score+bias选择top8 → 取原score[ids]归一化×2.5",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "experts": {
+      "signature": "clamped-swiglu:(288, 8, 2048)",
+      "title": "288 专家选 8 · width 2048",
+      "detail": "前三层Dense；之后288专家选8，另加1共享专家。 tiny对应32/top8，先3Dense再5MoE。shared不计入top8。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "shared": {
+      "signature": "shared",
+      "title": "1个独立shared expert，不占top-k",
+      "detail": "shared不参与routed top-k；此行按实际分支语义对齐。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "state": {
+      "signature": "kda-dsa-cache",
+      "title": "KDA convolution / KDA recurrent / DSA normalized latent / DSA indexer packed keys / mHC streams",
+      "detail": "KDA convolution: 固定；KDA recurrent: 固定 · FP32；DSA normalized latent: 随L增长；DSA indexer packed keys: 随L增长；mHC streams: 当前前向激活",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "prefill": {
+      "signature": "kda-dsa-prefill",
+      "title": "Prompt并行前向",
+      "detail": "KDA用chunk参考实现；DSA按query可见前缀产生因果稀疏mask。已有tiny CPU eager记录会先物化scores再加mask。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "decode": {
+      "signature": "kda-dsa-decode",
+      "title": "单token状态推进",
+      "detail": "KDA更新conv与递归矩阵；DSA延长normalized latent与indexer packed cache，再为本轮query选池与尾部。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "output": {
+      "signature": "mean-hyperhead",
+      "title": "HyperHead 对4路做无权 mean → RMSNorm → 可选last-position slice → LM head154880",
+      "detail": "HyperHead 对4路做无权 mean → RMSNorm → 可选last-position slice → LM head154880。普通AR不执行MTP。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "auxiliary": {
+      "signature": "glm-5.3-flash-aux",
+      "title": "可选模块与不执行的分支",
+      "detail": "已有执行回放为CPU/FP32反量化参考后端，固定18-token prompt；不是基模FP8 GPU性能或数值轨迹。 配置1个MTP辅助层；普通AR不执行。基模末层L44是KDA，不是完整12组3:1。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "indexer": {
+      "signature": "learned-pool-raw",
+      "title": "DSA选raw token",
+      "detail": "4-token learned gated pooling + APE → learned weighted head scores →选池并展开raw IDs；补最多3个尾token；indexer无RoPE。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "gating": {
+      "signature": "vector-lowrank",
+      "title": "KDA逐通道衰减 + low-rank输出门",
+      "detail": "KDA forget gate g逐通道，输出gate经g_a/g_b后sigmoid；DSA无相同KDA门。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "limitations": [
+    "另有指定tiny checkpoint的CPU/FP32真实回放；基模结构页仍为源码级解释，tiny数值诊断失败项保留。",
+    "同名功能按语义阶段对齐，不将不同深度的层号一一等价，也不把稀疏可见性当成所有后端的物理内存或性能结论。"
+  ]
+}

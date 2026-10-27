@@ -1,0 +1,591 @@
+{
+  "id": "deepseek-v4-pro",
+  "order": 4,
+  "name": "DeepSeek · V4-Pro",
+  "family": {
+    "id": "deepseek",
+    "name": "DeepSeek"
+  },
+  "reviewed_on": "2026-10-27",
+  "sources": [
+    {
+      "id": "base",
+      "label": "指定基模配置",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/b5968e9190ef611bbf34a7229255be88a0e937c1/config.json",
+      "revision": "b5968e9190ef611bbf34a7229255be88a0e937c1",
+      "local": "sources/models/deepseek-v4-pro/base.config.json",
+      "sha256": "5fe4568daee51c208cb8a79538eaeda090ae011ade1dee2c386aa95f569c810e",
+      "repo": "deepseek-ai/DeepSeek-V4-Pro"
+    },
+    {
+      "id": "base-card",
+      "label": "基模模型卡",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/b5968e9190ef611bbf34a7229255be88a0e937c1/README.md",
+      "revision": "b5968e9190ef611bbf34a7229255be88a0e937c1"
+    },
+    {
+      "id": "tiny",
+      "label": "Collection tiny 配置",
+      "url": "https://huggingface.co/tiny-random/deepseek-v4/blob/d20cabaa1c8a9f235e9bb50f1d5e98eeb6a530d5/config.json",
+      "revision": "d20cabaa1c8a9f235e9bb50f1d5e98eeb6a530d5",
+      "local": "sources/models/deepseek-v4-pro/tiny.config.json",
+      "sha256": "f5497e869991da8c81c12b4372cc5ad707666be1340a88f69940a86ec5c5e32e",
+      "repo": "tiny-random/deepseek-v4",
+      "collection_member": true
+    },
+    {
+      "id": "tiny-card",
+      "label": "tiny 构造说明",
+      "url": "https://huggingface.co/tiny-random/deepseek-v4/blob/d20cabaa1c8a9f235e9bb50f1d5e98eeb6a530d5/README.md",
+      "revision": "d20cabaa1c8a9f235e9bb50f1d5e98eeb6a530d5"
+    },
+    {
+      "id": "code",
+      "label": "已核对实现",
+      "url": "https://huggingface.co/deepseek-ai/DeepSeek-V4-Pro/blob/b5968e9190ef611bbf34a7229255be88a0e937c1/inference/model.py",
+      "lines": {
+        "compressor": [
+          279,
+          378
+        ],
+        "indexer": [
+          380,
+          433
+        ],
+        "attention": [
+          436,
+          543
+        ],
+        "router": [
+          546,
+          585
+        ],
+        "mhc": [
+          647,
+          701
+        ],
+        "hyper_head": [
+          703,
+          736
+        ]
+      }
+    }
+  ],
+  "variants": {
+    "base": {
+      "label": "指定基模",
+      "dimensions": {
+        "layers": 61,
+        "hidden": 7168,
+        "vocab": 129280,
+        "experts": 384,
+        "top_k": 6,
+        "expert_width": 3072,
+        "q_heads": 128,
+        "kv_heads": 1,
+        "shared": 1,
+        "context": 1048576,
+        "tied": false,
+        "streams": 4,
+        "stream_hidden": 28672
+      },
+      "attention_schedule": [
+        "HCA 128",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4"
+      ],
+      "ffn_schedule": [
+        "HashMoE",
+        "HashMoE",
+        "HashMoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE"
+      ],
+      "config_source": "base"
+    },
+    "tiny": {
+      "label": "Collection tiny 参考",
+      "dimensions": {
+        "layers": 7,
+        "hidden": 256,
+        "vocab": 129280,
+        "experts": 128,
+        "top_k": 6,
+        "expert_width": 256,
+        "q_heads": 4,
+        "kv_heads": 1,
+        "shared": 1,
+        "context": 1048576,
+        "tied": false,
+        "streams": 4,
+        "stream_hidden": 1024
+      },
+      "attention_schedule": [
+        "HCA 128",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4",
+        "HCA 128",
+        "CSA 4"
+      ],
+      "ffn_schedule": [
+        "HashMoE",
+        "HashMoE",
+        "HashMoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE"
+      ],
+      "config_source": "tiny"
+    }
+  },
+  "evidence": "配置与实现核对；非执行轨迹",
+  "has_trace": false,
+  "category": "压缩稀疏",
+  "modalities": [
+    "文本"
+  ],
+  "summary": "每层局部窗口 + 压缩历史；CSA 与 HCA 交替，搭配 mHC 和 token-ID hash/学习式专家路由。",
+  "pattern": "31 × HCA128 + 30 × CSA4",
+  "tiny_status": "目标同名 tiny · FP4/FP8",
+  "tiny_note": "选用 tiny-random/deepseek-v4，7 主干层、H256、128/top6，attention_bias=true 与基模不同。没有混用 deepseek-v4-bf16；后者 H8 且起始两层是另一种窗口结构。配置末尾 ratio0 属于 MTP，不能画进主干。",
+  "highlights": [
+    "61 层全部 MoE，前三层用 token-ID hash 选专家",
+    "CSA 索引压缩条目，不是 GLM DSA 的 raw token",
+    "mHC4 + 最终 learned HyperHead，不是无权 mean"
+  ],
+  "input": "纯文本 tokenizer → embedding → 扩展为 4 路 [B,T,4,H] 激活。token ID 还会送给最前面三个 HashMoE 路由器，不能在 embedding 后丢掉 ID 依赖。",
+  "norm": "mHC 内部对四路输入归一化并生成 pre/post/comb；attention Q 先低秩 RMSNorm，再逐 head 无权重 RMSNorm；共享 KV 做 RMSNorm。 mHC collapse后还分别执行独立attn_norm/ffn_norm，再调用子层。",
+  "position": "main Q/K 的尾部64维做 RoPE；压缩分支使用自己的 theta。输出还要对尾部64维做 inverse RoPE，因为 attention 的共享 KV 同时用作 V。",
+  "residual": {
+    "title": "mHC · 4 streams + Sinkhorn",
+    "summary": "每个 attention / MoE 子层分别生成 collapse、inject 和 residual mixing 系数。",
+    "steps": [
+      "输入扩为 4 streams",
+      "RMSNorm → pre/post/comb",
+      "pre 加权 collapse → H",
+      "子层 attention / MoE",
+      "comb 20轮 Sinkhorn",
+      "post×子层输出 + combᵀ×旧 streams"
+    ],
+    "equations": [
+      "Xnew = post ⊙ block(RMSNorm_sub(Σ preᵢ Xᵢ)) + combᵀ X"
+    ],
+    "notes": [
+      "四路为当前前向深度激活，不是跨 token cache。",
+      "collapse之后还有独立的attention/FFN子层RMSNorm，再进入子层计算。"
+    ],
+    "sources": [
+      "base",
+      "code"
+    ]
+  },
+  "output": "最终 learned HyperHead 用 sigmoid 混合 4 路，再 RMSNorm → 独立 LM head。GLM Flash 的最终 mean 不能复用到这里。",
+  "prefill": "按因果可见性完成压缩池；CSA 的候选压缩条目只有在其来源窗口完全可见后才可选。保留未完成池的 key/gate 累积状态。",
+  "decode": "新 raw KV 进入 128-token ring；到达 ratio4/128 边界才生成新的 pooled KV。查询压缩历史并与局部窗口合并，之后 inverse RoPE 和分组低秩输出投影。",
+  "extra": "这里的稀疏化限制计算时选取条目数，但压缩历史缓存仍随 L 增长；没有 KDA/GDN 的固定递归矩阵。",
+  "mtp": "num_nextn_predict_layers=1；compress_ratios 共62项，前61项才是主干，末尾0为 MTP。",
+  "attention": {
+    "HCA 128": {
+      "title": "HCA · heavy compression ×128",
+      "summary": "每层同时保留 window128；压缩历史采用不重叠的128-token池，读取所有已完成且可见的压缩条目。",
+      "steps": [
+        "Q低秩 → RMSNorm → head projection / norm →尾64维RoPE(Q)",
+        "共享 KV projection + RMSNorm + RoPE",
+        "raw local window 128",
+        "learned gate + APE 压缩池",
+        "局部 + 压缩候选 attention + sink",
+        "inverse RoPE on attention output",
+        "grouped O low-rank → H"
+      ],
+      "equations": [
+        "p = softmax(gate + APE, pool_token_axis)",
+        "pooled_kv = RMSNorm(Σ p ⊙ kv)",
+        "Attention(local_window ∪ visible_compressed_history)"
+      ],
+      "notes": [
+        "shared KV 的变换后向量同时作为 K/V。learned sink 只参与 softmax 分母，value贡献为0。"
+      ],
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "CSA 4": {
+      "title": "CSA · compressed sparse attention ×4",
+      "summary": "窗口与相邻重叠压缩池并用；独立 lightning indexer 选择最多1024个压缩条目。",
+      "steps": [
+        "Q低秩 → RMSNorm → head projection / norm →尾64维RoPE(Q)",
+        "共享 KV projection + RMSNorm + RoPE",
+        "raw local window 128",
+        "learned gate + APE 压缩池",
+        "index Q/K + RoPE/Hadamard + FP4 reference",
+        "weighted ReLU score → top1024 compressed slots",
+        "局部 + 压缩候选 attention + sink",
+        "inverse RoPE on attention output",
+        "grouped O low-rank → H"
+      ],
+      "equations": [
+        "候选单位 = 压缩条目，不是原始 token",
+        "Q:[B,128,T,512]; shared KV width512",
+        "O:128 heads → 16 groups → rank1024/group → H7168"
+      ],
+      "notes": [
+        "CSA pooling 使用前后相邻窗口的 Ca/Cb 片段，不是简单均值。",
+        "indexer 为64×128；压缩 pool 与 indexer 各自有未完成状态。"
+      ],
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "moe": {
+    "title": "Hash / learned MoE + shared",
+    "summary": "全部61层都有 MoE，384专家选6，另加1 shared。前三层是 HashMoE，不是 Dense。",
+    "steps": [
+      "同一输入分成并行分支",
+      "各分支独立计算（下图）",
+      "routed output + shared output →当前模型的FFN residual更新"
+    ],
+    "equations": [
+      "score = √softplus(Wrouter x)",
+      "ids = tid2eid[token_id]  或  topk(score+bias)",
+      "w = score[ids]/Σscore[ids] × 2.5"
+    ],
+    "notes": [
+      "hash 路由只改变选谁，选中权重仍来自 learned scores。",
+      "gate max10；up clip[-10,10]；shared不占top6。",
+      "Router的ID/weights控制routed专家分支；原始H同时送入专家投影。Router输出不是送给shared的输入，也不直接加到最终hidden。"
+    ],
+    "sources": [
+      "base",
+      "code"
+    ],
+    "routing_steps": [
+      "FP32 linear →sqrt(softplus)",
+      "L0–2: tid2eid[token_id]；其他层score+bias top6",
+      "原score[ids]归一化×2.5"
+    ],
+    "branches": [
+      {
+        "title": "ROUTER · from original H",
+        "steps": [
+          "FP32 linear →sqrt(softplus)",
+          "L0–2: tid2eid[token_id]；其他层score+bias top6",
+          "原score[ids]归一化×2.5"
+        ]
+      },
+      {
+        "title": "ROUTED EXPERTS · from X",
+        "steps": [
+          "与Router相同的H输入",
+          "按expert IDs执行专家gated MLP",
+          "按Router weights加权求和"
+        ]
+      },
+      {
+        "title": "SHARED BRANCH",
+        "steps": [
+          "同一H输入",
+          "always-on shared gated MLP"
+        ]
+      }
+    ],
+    "merge": "routed output + shared output →当前模型的FFN residual更新"
+  },
+  "states": [
+    {
+      "name": "Raw SWA ring",
+      "base_shape": "[B,128,512]",
+      "tiny_shape": "[B,128,512]",
+      "growth": "固定窗口",
+      "detail": "共享KV向量；布局来自官方reference，后台可选择不同batch轴组织。"
+    },
+    {
+      "name": "Compressed KV",
+      "base_shape": "[B,⌊L/r⌋,512]",
+      "tiny_shape": "[B,⌊L/r⌋,512]",
+      "growth": "随L/r增长",
+      "detail": "r=4或128；不是固定状态矩阵。边界与重叠窗口需以各压缩器规则为准。"
+    },
+    {
+      "name": "Incomplete compression buffers",
+      "base_shape": "key/gate + partial window",
+      "tiny_shape": "与基模相同的pool状态宽度；r=4/128",
+      "growth": "有界部分窗口",
+      "detail": "未完成池跨decode保留；CSA重叠窗口需保留前一窗口相关分量。"
+    },
+    {
+      "name": "CSA indexer cache",
+      "base_shape": "compressed keys + pool state",
+      "tiny_shape": "对应indexer状态",
+      "growth": "压缩历史增长",
+      "detail": "仅CSA；不是GLM raw key/gate257打包。"
+    },
+    {
+      "name": "mHC streams",
+      "base_shape": "[B,T,4,7168]",
+      "tiny_shape": "[B,T,4,256]",
+      "growth": "当前前向激活",
+      "detail": "不跨token保存；不能计入KV cache。"
+    }
+  ],
+  "comparison": {
+    "input": {
+      "signature": "文本",
+      "title": "文本",
+      "detail": "纯文本 tokenizer → embedding → 扩展为 4 路 [B,T,4,H] 激活。token ID 还会送给最前面三个 HashMoE 路由器，不能在 embedding 后丢掉 ID 依赖。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "attention": {
+      "signature": "hca-csa",
+      "title": "31 × HCA128 + 30 × CSA4",
+      "detail": "每层局部窗口 + 压缩历史；CSA 与 HCA 交替，搭配 mHC 和 token-ID hash/学习式专家路由。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "position": {
+      "signature": "compressed-rope-inverse",
+      "title": "main Q/K 的尾部64维做 RoPE",
+      "detail": "main Q/K 的尾部64维做 RoPE；压缩分支使用自己的 theta。输出还要对尾部64维做 inverse RoPE，因为 attention 的共享 KV 同时用作 V。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "normalization": {
+      "signature": "deepseek-v4-pro-norm",
+      "title": "归一化位置与参数化",
+      "detail": "mHC 内部对四路输入归一化并生成 pre/post/comb；attention Q 先低秩 RMSNorm，再逐 head 无权重 RMSNorm；共享 KV 做 RMSNorm。 mHC collapse后还分别执行独立attn_norm/ffn_norm，再调用子层。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "residual": {
+      "signature": "mhc",
+      "title": "mHC · 4 streams + Sinkhorn",
+      "detail": "每个 attention / MoE 子层分别生成 collapse、inject 和 residual mixing 系数。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "routing": {
+      "signature": "sqrtsoftplus-hash",
+      "title": "Hash / learned MoE + shared",
+      "detail": "FP32 linear →sqrt(softplus) → L0–2: tid2eid[token_id]；其他层score+bias top6 → 原score[ids]归一化×2.5",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "experts": {
+      "signature": "clamped-swiglu:(384, 6, 3072)",
+      "title": "384 专家选 6 · width 3072",
+      "detail": "全部61层都有 MoE，384专家选6，另加1 shared。前三层是 HashMoE，不是 Dense。 hash 路由只改变选谁，选中权重仍来自 learned scores。 gate max10；up clip[-10,10]；shared不占top6。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "shared": {
+      "signature": "shared",
+      "title": "1个独立shared expert，不占top-k",
+      "detail": "shared不参与routed top-k；此行按实际分支语义对齐。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "state": {
+      "signature": "hca-csa-cache",
+      "title": "Raw SWA ring / Compressed KV / Incomplete compression buffers / CSA indexer cache / mHC streams",
+      "detail": "Raw SWA ring: 固定窗口；Compressed KV: 随L/r增长；Incomplete compression buffers: 有界部分窗口；CSA indexer cache: 压缩历史增长；mHC streams: 当前前向激活",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "prefill": {
+      "signature": "hca-csa-prefill",
+      "title": "Prompt并行前向",
+      "detail": "按因果可见性完成压缩池；CSA 的候选压缩条目只有在其来源窗口完全可见后才可选。保留未完成池的 key/gate 累积状态。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "decode": {
+      "signature": "hca-csa-decode",
+      "title": "单token状态推进",
+      "detail": "新 raw KV 进入 128-token ring；到达 ratio4/128 边界才生成新的 pooled KV。查询压缩历史并与局部窗口合并，之后 inverse RoPE 和分组低秩输出投影。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "output": {
+      "signature": "learned-hyperhead",
+      "title": "最终 learned HyperHead 用 sigmoid 混合 4 路，再 RMSNorm → 独立 LM head",
+      "detail": "最终 learned HyperHead 用 sigmoid 混合 4 路，再 RMSNorm → 独立 LM head。GLM Flash 的最终 mean 不能复用到这里。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "auxiliary": {
+      "signature": "deepseek-v4-pro-aux",
+      "title": "可选模块与不执行的分支",
+      "detail": "这里的稀疏化限制计算时选取条目数，但压缩历史缓存仍随 L 增长；没有 KDA/GDN 的固定递归矩阵。 num_nextn_predict_layers=1；compress_ratios 共62项，前61项才是主干，末尾0为 MTP。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "indexer": {
+      "signature": "compressed-entries",
+      "title": "CSA选择压缩条目 / HCA读所有压缩条目",
+      "detail": "CSA ratio4，indexer最多1024条；HCA ratio128。均另读局部128窗口。不是GLM的raw-token索引。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "gating": {
+      "signature": "pool-gate",
+      "title": "压缩池逐通道权重 + attention sink",
+      "detail": "learned pooling gate参与压缩，sink只参与softmax分母；不是线性递归遗忘门。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "limitations": [
+    "本站结构页展示配置与源码级数据流，没有为此基模采集token、激活、路由权重或logits。",
+    "同名功能按语义阶段对齐，不将不同深度的层号一一等价，也不把稀疏可见性当成所有后端的物理内存或性能结论。"
+  ]
+}

@@ -1,0 +1,454 @@
+{
+  "id": "qwen3-30b-a3b",
+  "order": 1,
+  "name": "Qwen3 · 30B-A3B",
+  "family": {
+    "id": "qwen",
+    "name": "Qwen"
+  },
+  "reviewed_on": "2026-10-27",
+  "sources": [
+    {
+      "id": "base",
+      "label": "指定基模配置",
+      "url": "https://huggingface.co/Qwen/Qwen3-30B-A3B/blob/ad44e777bcd18fa416d9da3bd8f70d33ebb85d39/config.json",
+      "revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39",
+      "local": "sources/models/qwen3-30b-a3b/base.config.json",
+      "sha256": "2850ddb3bf7aecad20b611e2d44f3077fc8193f4827c93beddd4c02ad63c2297",
+      "repo": "Qwen/Qwen3-30B-A3B"
+    },
+    {
+      "id": "base-card",
+      "label": "基模模型卡",
+      "url": "https://huggingface.co/Qwen/Qwen3-30B-A3B/blob/ad44e777bcd18fa416d9da3bd8f70d33ebb85d39/README.md",
+      "revision": "ad44e777bcd18fa416d9da3bd8f70d33ebb85d39"
+    },
+    {
+      "id": "tiny",
+      "label": "Collection tiny 配置",
+      "url": "https://huggingface.co/tiny-random/qwen3-moe/blob/10a349dcb488b10c27aa4a3c1dbefb74c41565c3/config.json",
+      "revision": "10a349dcb488b10c27aa4a3c1dbefb74c41565c3",
+      "local": "sources/models/qwen3-30b-a3b/tiny.config.json",
+      "sha256": "91bedb231915f4ca541ab64e837844bfe3f38a76c6c507cf255da33d207b980d",
+      "repo": "tiny-random/qwen3-moe",
+      "collection_member": true
+    },
+    {
+      "id": "tiny-card",
+      "label": "tiny 构造说明",
+      "url": "https://huggingface.co/tiny-random/qwen3-moe/blob/10a349dcb488b10c27aa4a3c1dbefb74c41565c3/README.md",
+      "revision": "10a349dcb488b10c27aa4a3c1dbefb74c41565c3"
+    },
+    {
+      "id": "code",
+      "label": "Transformers 5.20.2 实现",
+      "url": "https://github.com/huggingface/transformers/blob/v5.20.2/src/transformers/models/qwen3_moe/modeling_qwen3_moe.py",
+      "sha256": "58387f2cc22a706e7e4c7dabe6cf05cb1e9c9fe48c57e2f2a0fc5cbdb2132f4f",
+      "version": "5.20.2"
+    }
+  ],
+  "variants": {
+    "base": {
+      "label": "指定基模",
+      "dimensions": {
+        "layers": 48,
+        "hidden": 2048,
+        "vocab": 151936,
+        "experts": 128,
+        "top_k": 8,
+        "expert_width": 768,
+        "q_heads": 32,
+        "kv_heads": 4,
+        "shared": 0,
+        "context": 40960,
+        "tied": false,
+        "streams": 1,
+        "stream_hidden": 2048
+      },
+      "attention_schedule": [
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA",
+        "GQA"
+      ],
+      "ffn_schedule": [
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE"
+      ],
+      "config_source": "base"
+    },
+    "tiny": {
+      "label": "Collection tiny 参考",
+      "dimensions": {
+        "layers": 2,
+        "hidden": 64,
+        "vocab": 151936,
+        "experts": 8,
+        "top_k": 2,
+        "expert_width": 128,
+        "q_heads": 2,
+        "kv_heads": 1,
+        "shared": 0,
+        "context": 40960,
+        "tied": true,
+        "streams": 1,
+        "stream_hidden": 64
+      },
+      "attention_schedule": [
+        "GQA",
+        "GQA"
+      ],
+      "ffn_schedule": [
+        "Dense",
+        "MoE"
+      ],
+      "config_source": "tiny"
+    }
+  },
+  "evidence": "配置与实现核对；非执行轨迹",
+  "has_trace": false,
+  "category": "全注意力",
+  "modalities": [
+    "文本"
+  ],
+  "summary": "全层 GQA + routed MoE。作为基线，观察后续模型增加了哪些状态、门控与旁路。",
+  "pattern": "48 × GQA + MoE",
+  "tiny_status": "同家族参考 · 来源 235B",
+  "tiny_note": "tiny-random/qwen3-moe 的构造来源是 Qwen3-235B-A22B，不是目标 30B-A3B；tiny 只有 2 层，L0 Dense / L1 MoE，8 选 2，且词嵌入与输出头绑定。基模 48 层全部 MoE、128 选 8、输出头不绑定。",
+  "highlights": [
+    "全上下文 GQA，没有线性递归或索引器",
+    "softmax 路由，128 专家选 8，无共享专家",
+    "标准单路残差；Q/K head RMSNorm + full-head RoPE"
+  ],
+  "input": "文本消息先经过对应 tokenizer 的原生 chat template，再转 input_ids[B,T]，查表得到 [B,T,H]。本页没有生成或伪造 token ID。",
+  "norm": "Attention 与 FFN 各使用一次 pre-RMSNorm；Q/K 各自按 head_dim 做 RMSNorm。",
+  "position": "Q/K 全 head RoPE，theta=1,000,000；没有滑动窗口。",
+  "residual": {
+    "title": "普通单路 residual",
+    "summary": "Attention 和 FFN 顺序执行，各自保留输入旁路。",
+    "steps": [
+      "pre-RMSNorm → Attention",
+      "与原输入相加",
+      "pre-RMSNorm → MoE",
+      "再次相加"
+    ],
+    "equations": [
+      "X₁ = X + Attention(RMSNorm(X))",
+      "X₂ = X₁ + FFN(RMSNorm(X₁))"
+    ],
+    "notes": [],
+    "sources": [
+      "base",
+      "code"
+    ]
+  },
+  "output": "最终 RMSNorm → LM head → [B,T,V] logits；推理可只保留末位置。基模输出头与 embedding 不绑定，tiny 则绑定。",
+  "prefill": "对整个 prompt 的 T 个位置执行因果 GQA，逐层填充 K/V cache；末位置 logits 预测第一个新 token。",
+  "decode": "每次 T=1，只计算本轮 token 的 Q/K/V；将 K/V 追加到每层历史，再查询 L 个可见位置。",
+  "extra": "没有视觉编码器、PLE、mHC 或模型专属索引器。",
+  "mtp": "普通自回归；该配置没有额外 MTP 主干。",
+  "attention": {
+    "GQA": {
+      "title": "Full causal GQA",
+      "summary": "32 个 Q heads 共享 4 个 KV heads；每个 head 维度 128。",
+      "steps": [
+        "RMSNorm(X)",
+        "Q / K / V 线性投影",
+        "Q/K head RMSNorm",
+        "RoPE(Q,K)",
+        "追加 K/V cache",
+        "KV按query group逻辑广播（cache仍4heads）",
+        "causal softmax(QKᵀ/√d) @ V",
+        "concat heads → O projection"
+      ],
+      "equations": [
+        "Q:[B,32,T,128]; K,V:[B,4,L,128]",
+        "A = softmax(QKᵀ / √128 + causal_mask)",
+        "Y = Wo · concat(A V)"
+      ],
+      "notes": [
+        "以上显式数字为基模；tiny 维度见配置表。没有 attention 输出 sigmoid gate。"
+      ],
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "moe": {
+    "title": "Softmax routed SwiGLU",
+    "summary": "基模每层 128 专家选 8；没有 shared expert。",
+    "steps": [
+      "linear H→E",
+      "FP32 softmax over E",
+      "top-k expert IDs",
+      "选中分数重新归一化",
+      "专家 gate/up → SiLU×up → down",
+      "路由加权求和"
+    ],
+    "equations": [
+      "p = softmax(Wrouter x)",
+      "w = p[topk] / Σ p[topk]",
+      "expert(x) = Wdown(SiLU(Wgate x) ⊙ Wup x)"
+    ],
+    "notes": [
+      "tiny 的第 0 层是 Dense MLP，不执行此路由。"
+    ],
+    "sources": [
+      "base",
+      "code"
+    ],
+    "routing_steps": [
+      "linear H→E",
+      "FP32 softmax",
+      "top-k →selected-score renorm"
+    ]
+  },
+  "states": [
+    {
+      "name": "K cache per layer",
+      "base_shape": "[B,4,L,128]",
+      "tiny_shape": "[B,1,L,32]",
+      "growth": "linear in context L",
+      "detail": "linear in context L"
+    },
+    {
+      "name": "V cache per layer",
+      "base_shape": "[B,4,L,128]",
+      "tiny_shape": "[B,1,L,32]",
+      "growth": "linear in context L",
+      "detail": "linear in context L"
+    }
+  ],
+  "comparison": {
+    "input": {
+      "signature": "文本",
+      "title": "文本",
+      "detail": "文本消息先经过对应 tokenizer 的原生 chat template，再转 input_ids[B,T]，查表得到 [B,T,H]。本页没有生成或伪造 token ID。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "attention": {
+      "signature": "gqa",
+      "title": "48 × GQA + MoE",
+      "detail": "全层 GQA + routed MoE。作为基线，观察后续模型增加了哪些状态、门控与旁路。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "position": {
+      "signature": "rope-full",
+      "title": "Q/K 全 head RoPE，theta=1,000,000",
+      "detail": "Q/K 全 head RoPE，theta=1,000,000；没有滑动窗口。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "normalization": {
+      "signature": "qwen3-30b-a3b-norm",
+      "title": "归一化位置与参数化",
+      "detail": "Attention 与 FFN 各使用一次 pre-RMSNorm；Q/K 各自按 head_dim 做 RMSNorm。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "residual": {
+      "signature": "plain",
+      "title": "普通单路 residual",
+      "detail": "Attention 和 FFN 顺序执行，各自保留输入旁路。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "routing": {
+      "signature": "softmax",
+      "title": "Softmax routed SwiGLU",
+      "detail": "linear H→E → FP32 softmax → top-k →selected-score renorm",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "experts": {
+      "signature": "swiglu:(128, 8, 768)",
+      "title": "128 专家选 8 · width 768",
+      "detail": "基模每层 128 专家选 8；没有 shared expert。 tiny 的第 0 层是 Dense MLP，不执行此路由。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "shared": {
+      "signature": "none",
+      "title": "无共享分支",
+      "detail": "该模型不执行独立共享专家。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "state": {
+      "signature": "gqa-cache",
+      "title": "K cache per layer / V cache per layer",
+      "detail": "K cache per layer: linear in context L；V cache per layer: linear in context L",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "prefill": {
+      "signature": "gqa-prefill",
+      "title": "Prompt并行前向",
+      "detail": "对整个 prompt 的 T 个位置执行因果 GQA，逐层填充 K/V cache；末位置 logits 预测第一个新 token。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "decode": {
+      "signature": "gqa-decode",
+      "title": "单token状态推进",
+      "detail": "每次 T=1，只计算本轮 token 的 Q/K/V；将 K/V 追加到每层历史，再查询 L 个可见位置。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "output": {
+      "signature": "rms-lm",
+      "title": "最终 RMSNorm → LM head → [B,T,V] logits；推理可只保留末位置",
+      "detail": "最终 RMSNorm → LM head → [B,T,V] logits；推理可只保留末位置。基模输出头与 embedding 不绑定，tiny 则绑定。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "auxiliary": {
+      "signature": "qwen3-30b-a3b-aux",
+      "title": "可选模块与不执行的分支",
+      "detail": "没有视觉编码器、PLE、mHC 或模型专属索引器。 普通自回归；该配置没有额外 MTP 主干。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "indexer": {
+      "signature": "none",
+      "title": "无稀疏索引器",
+      "detail": "每个query读取全部因果可见K/V。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "gating": {
+      "signature": "none",
+      "title": "没有attention输出门",
+      "detail": "Q/K RMSNorm后为普通GQA。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "limitations": [
+    "本站结构页展示配置与源码级数据流，没有为此基模采集token、激活、路由权重或logits。",
+    "同名功能按语义阶段对齐，不将不同深度的层号一一等价，也不把稀疏可见性当成所有后端的物理内存或性能结论。"
+  ]
+}

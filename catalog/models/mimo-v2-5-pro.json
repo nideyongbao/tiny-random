@@ -1,0 +1,493 @@
+{
+  "id": "mimo-v2-5-pro",
+  "order": 5,
+  "name": "Xiaomi MiMo · V2.5-Pro",
+  "family": {
+    "id": "mimo",
+    "name": "MiMo"
+  },
+  "reviewed_on": "2026-10-27",
+  "sources": [
+    {
+      "id": "base",
+      "label": "指定基模配置",
+      "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro/blob/21d1ecfecd7bd70f31be25ca49d7edd21f003659/config.json",
+      "revision": "21d1ecfecd7bd70f31be25ca49d7edd21f003659",
+      "local": "sources/models/mimo-v2-5-pro/base.config.json",
+      "sha256": "7e11c6cd358a841d5ac016fc80c030cad14d418ee125e9bde1eb6d0757b635d6",
+      "repo": "XiaomiMiMo/MiMo-V2.5-Pro"
+    },
+    {
+      "id": "base-card",
+      "label": "基模模型卡",
+      "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro/blob/21d1ecfecd7bd70f31be25ca49d7edd21f003659/README.md",
+      "revision": "21d1ecfecd7bd70f31be25ca49d7edd21f003659"
+    },
+    {
+      "id": "code",
+      "label": "已核对实现",
+      "url": "https://huggingface.co/XiaomiMiMo/MiMo-V2.5-Pro/blob/21d1ecfecd7bd70f31be25ca49d7edd21f003659/modeling_mimo_v2.py",
+      "lines": {
+        "eager_sink": [
+          67,
+          98
+        ],
+        "router": [
+          130,
+          179
+        ],
+        "moe": [
+          182,
+          213
+        ],
+        "attention": [
+          215,
+          387
+        ],
+        "decoder": [
+          389,
+          437
+        ]
+      }
+    }
+  ],
+  "variants": {
+    "base": {
+      "label": "指定基模",
+      "dimensions": {
+        "layers": 70,
+        "hidden": 6144,
+        "vocab": 152576,
+        "experts": 384,
+        "top_k": 8,
+        "expert_width": 2048,
+        "q_heads": 128,
+        "kv_heads": 8,
+        "shared": 0,
+        "context": 1048576,
+        "tied": false,
+        "streams": 1,
+        "stream_hidden": 6144
+      },
+      "attention_schedule": [
+        "Global GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Global GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Global GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Global GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Global GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Global GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Global GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Global GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Global GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Sliding GQA",
+        "Global GQA"
+      ],
+      "ffn_schedule": [
+        "Dense",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE"
+      ],
+      "config_source": "base"
+    }
+  },
+  "evidence": "配置与实现核对；非执行轨迹",
+  "has_trace": false,
+  "category": "窗口混合",
+  "modalities": [
+    "文本"
+  ],
+  "summary": "60 层滑窗 + 10 层全局 GQA。融合 QKV、不同 QK/V 维度、局部 attention sink 是核心区别。",
+  "pattern": "60 × Sliding + 10 × Global",
+  "tiny_status": "未找到对应 tiny",
+  "tiny_note": "截至本次 Collection 与同组织目录快照，未找到 MiMo-V2.5-Pro 对应 tiny。此页仅展示固定版本的官方基模配置，不合成或借用其他模型。",
+  "highlights": [
+    "Pro 是纯文本；不要套用 MiMo-V2.5 多模态版",
+    "Q/K head192，V head128；V固定乘0.612",
+    "L0 Dense、L1–69 MoE；384/top8，无共享专家"
+  ],
+  "input": "原生 tokenizer/chat template → token embedding [B,T,6144]。该 Pro 模型是纯文本；没有视觉 encoder 或图像占位注入。",
+  "norm": "Attention / FFN 两次 pre-RMSNorm；这个固定版本的 remote attention 实现没有内部 Q/K RMSNorm。",
+  "position": "Q/K 每 head192维，仅前64维旋转。SWA theta10000，global theta10,000,000；partial_rotary_factor=.334 不能四舍五入成精确1/3的配置值。",
+  "residual": {
+    "title": "普通单路 pre-norm residual",
+    "summary": "两条标准 attention / FFN residual 支路，不展开多路 stream。",
+    "steps": [
+      "RMSNorm → attention",
+      "residual add",
+      "RMSNorm → Dense/MoE",
+      "residual add"
+    ],
+    "equations": [
+      "X₁=X+Attention(Norm₁(X))",
+      "X₂=X₁+FFN(Norm₂(X₁))"
+    ],
+    "notes": [],
+    "sources": [
+      "base",
+      "code"
+    ]
+  },
+  "output": "Final RMSNorm → 不绑定的 LM head（vocab152576）。模型卡中的3个 dense MTP 模块是可选推测解码路径，当前 remote modeling 文件以普通主干为主。",
+  "prefill": "按真实70层序列编码 prompt；global层号为0,7,15,23,31,39,47,55,62,69。其余60层是128窗口；不能用严格7周期替代。",
+  "decode": "每层追加或更新本轮 K/V；局部层只读取可见窗口，全局层读取全部历史。实际内存是否裁剪取决于 cache 后端。",
+  "extra": "attention value_scale=0.612 应在 V cache/update/attention 前应用。SWA 的 sink 概率从 @V 部分去掉，仅改变 softmax 分母。",
+  "mtp": "模型卡声明3个 MTP 模块（dense FFN）；不要把它们计入70层主干。",
+  "attention": {
+    "Sliding GQA": {
+      "title": "Sliding GQA + attention sink",
+      "summary": "128 个 Q heads / 8 个 KV heads；仅局部层启用 learned sink。",
+      "steps": [
+        "fused QKV projection",
+        "split Q24576 / K1536 / V1024",
+        "V × 0.612",
+        "Q/K partial RoPE (64 dims)",
+        "cache update",
+        "window128 + per-head sink softmax",
+        "drop sink probability → @V → O"
+      ],
+      "equations": [
+        "Q:[B,128,T,192]; K:[B,8,Lw,192]; V:[B,8,Lw,128]",
+        "softmax([QKᵀ/√192 + mask, sink])[:real_keys] @ V"
+      ],
+      "notes": [
+        "窗口长度表示可见性，不能直接断言所有后端物理存储只有128个位置。"
+      ],
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "Global GQA": {
+      "title": "Global GQA · no sink",
+      "summary": "投影形状同局部层，但全历史可见，RoPE theta不同，不加sink。",
+      "steps": [
+        "fused QKV projection",
+        "split Q24576 / K1536 / V1024",
+        "V × 0.612",
+        "Q/K partial RoPE (64 dims)",
+        "cache update",
+        "causal attention → O projection"
+      ],
+      "equations": [
+        "Q:[B,128,T,192]; K:[B,8,L,192]; V:[B,8,L,128]",
+        "Y = Wo · concat(softmax(QKᵀ/√192 + mask) @ V)"
+      ],
+      "notes": [],
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "moe": {
+    "title": "Sigmoid MoE · no shared",
+    "summary": "第0层是 intermediate16384 的 Dense SwiGLU；后69层384专家选8，expert width2048。",
+    "steps": [
+      "FP32 linear → sigmoid",
+      "sigmoid score + correction bias → top8",
+      "取未加bias分数 → renorm",
+      "SwiGLU experts",
+      "routed weighted sum"
+    ],
+    "equations": [
+      "w = sigmoid(logits)[ids] / Σ sigmoid(logits)[ids]",
+      "y = Σ wᵢ Wdownᵢ(SiLU(Wgateᵢ x) ⊙ Wupᵢ x)"
+    ],
+    "notes": [
+      "n_group=1，组筛选不额外限制；routed scale 的 null 在实现中映射为1。",
+      "没有 shared 分支，没有 GLM/DeepSeek 的专家 clamp。"
+    ],
+    "sources": [
+      "base",
+      "code"
+    ],
+    "routing_steps": [
+      "FP32 linear →sigmoid",
+      "score+bias选择top8",
+      "取原score[ids]归一化×1.0"
+    ]
+  },
+  "states": [
+    {
+      "name": "Sliding K / V",
+      "base_shape": "[B,8,Lw,192] / [B,8,Lw,128]",
+      "tiny_shape": null,
+      "growth": "窗口可见性128",
+      "detail": "QK与V维度不同；V存储包含0.612缩放。物理缓存是否裁剪看backend。"
+    },
+    {
+      "name": "Global K / V",
+      "base_shape": "[B,8,L,192] / [B,8,L,128]",
+      "tiny_shape": null,
+      "growth": "随L增长",
+      "detail": "global层没有sink；不使用递归状态矩阵。"
+    }
+  ],
+  "comparison": {
+    "input": {
+      "signature": "文本",
+      "title": "文本",
+      "detail": "原生 tokenizer/chat template → token embedding [B,T,6144]。该 Pro 模型是纯文本；没有视觉 encoder 或图像占位注入。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "attention": {
+      "signature": "swa-global-mimo",
+      "title": "60 × Sliding + 10 × Global",
+      "detail": "60 层滑窗 + 10 层全局 GQA。融合 QKV、不同 QK/V 维度、局部 attention sink 是核心区别。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "position": {
+      "signature": "dual-partial-rope",
+      "title": "Q/K 每 head192维，仅前64维旋转。SWA theta10000，global theta10,000,000",
+      "detail": "Q/K 每 head192维，仅前64维旋转。SWA theta10000，global theta10,000,000；partial_rotary_factor=.334 不能四舍五入成精确1/3的配置值。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "normalization": {
+      "signature": "mimo-v2-5-pro-norm",
+      "title": "归一化位置与参数化",
+      "detail": "Attention / FFN 两次 pre-RMSNorm；这个固定版本的 remote attention 实现没有内部 Q/K RMSNorm。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "residual": {
+      "signature": "plain",
+      "title": "普通单路 pre-norm residual",
+      "detail": "两条标准 attention / FFN residual 支路，不展开多路 stream。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "routing": {
+      "signature": "sigmoid-renorm",
+      "title": "Sigmoid MoE · no shared",
+      "detail": "FP32 linear →sigmoid → score+bias选择top8 → 取原score[ids]归一化×1.0",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "experts": {
+      "signature": "swiglu:(384, 8, 2048)",
+      "title": "384 专家选 8 · width 2048",
+      "detail": "第0层是 intermediate16384 的 Dense SwiGLU；后69层384专家选8，expert width2048。 n_group=1，组筛选不额外限制；routed scale 的 null 在实现中映射为1。 没有 shared 分支，没有 GLM/DeepSeek 的专家 clamp。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "shared": {
+      "signature": "none",
+      "title": "无共享分支",
+      "detail": "该模型不执行独立共享专家。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "state": {
+      "signature": "swa-global-mimo-cache",
+      "title": "Sliding K / V / Global K / V",
+      "detail": "Sliding K / V: 窗口可见性128；Global K / V: 随L增长",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "prefill": {
+      "signature": "swa-global-mimo-prefill",
+      "title": "Prompt并行前向",
+      "detail": "按真实70层序列编码 prompt；global层号为0,7,15,23,31,39,47,55,62,69。其余60层是128窗口；不能用严格7周期替代。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "decode": {
+      "signature": "swa-global-mimo-decode",
+      "title": "单token状态推进",
+      "detail": "每层追加或更新本轮 K/V；局部层只读取可见窗口，全局层读取全部历史。实际内存是否裁剪取决于 cache 后端。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "output": {
+      "signature": "rms-lm",
+      "title": "Final RMSNorm → 不绑定的 LM head（vocab152576）",
+      "detail": "Final RMSNorm → 不绑定的 LM head（vocab152576）。模型卡中的3个 dense MTP 模块是可选推测解码路径，当前 remote modeling 文件以普通主干为主。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "auxiliary": {
+      "signature": "mimo-v2-5-pro-aux",
+      "title": "可选模块与不执行的分支",
+      "detail": "attention value_scale=0.612 应在 V cache/update/attention 前应用。SWA 的 sink 概率从 @V 部分去掉，仅改变 softmax 分母。 模型卡声明3个 MTP 模块（dense FFN）；不要把它们计入70层主干。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "indexer": {
+      "signature": "window-only",
+      "title": "局部mask / 全局注意力",
+      "detail": "不使用学习式top-k索引器；SWA窗口128并带sink，全局层无sink。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "gating": {
+      "signature": "value-scale-sink",
+      "title": "V固定缩放0.612 + SWA sink",
+      "detail": "value_scale是固定数，不是token相关sigmoid输出门；只有局部层有sink。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "limitations": [
+    "本站结构页展示配置与源码级数据流，没有为此基模采集token、激活、路由权重或logits。",
+    "同名功能按语义阶段对齐，不将不同深度的层号一一等价，也不把稀疏可见性当成所有后端的物理内存或性能结论。"
+  ]
+}

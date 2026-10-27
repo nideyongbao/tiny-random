@@ -1,0 +1,565 @@
+{
+  "id": "qwen3-8-flash-next",
+  "order": 9,
+  "name": "Qwen3.8 · Flash-Next",
+  "family": {
+    "id": "qwen",
+    "name": "Qwen"
+  },
+  "reviewed_on": "2026-10-27",
+  "sources": [
+    {
+      "id": "base",
+      "label": "指定基模配置",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next/blob/de4b8e4d43b917e7706784d8bb445c9af86a3540/config.json",
+      "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540",
+      "local": "sources/models/qwen3-8-flash-next/base.config.json",
+      "sha256": "889658f2508e8c61d409b02e70e0d78d8d4452ec65aaafbe129805d213d2e74b",
+      "repo": "Qwen/Qwen3.8-Flash-Next"
+    },
+    {
+      "id": "base-card",
+      "label": "基模模型卡",
+      "url": "https://huggingface.co/Qwen/Qwen3.8-Flash-Next/blob/de4b8e4d43b917e7706784d8bb445c9af86a3540/README.md",
+      "revision": "de4b8e4d43b917e7706784d8bb445c9af86a3540"
+    },
+    {
+      "id": "tiny",
+      "label": "Collection tiny 配置",
+      "url": "https://huggingface.co/tiny-random/qwen3.8-flash-next/blob/bdd92aba409acb833baedd91ff722d6d1eba834e/config.json",
+      "revision": "bdd92aba409acb833baedd91ff722d6d1eba834e",
+      "local": "sources/models/qwen3-8-flash-next/tiny.config.json",
+      "sha256": "b87e1f973cf114142c21b5089c40d4596040581ff809e194823300e5c9fc88f2",
+      "repo": "tiny-random/qwen3.8-flash-next",
+      "collection_member": true
+    },
+    {
+      "id": "tiny-card",
+      "label": "tiny 构造说明",
+      "url": "https://huggingface.co/tiny-random/qwen3.8-flash-next/blob/bdd92aba409acb833baedd91ff722d6d1eba834e/README.md",
+      "revision": "bdd92aba409acb833baedd91ff722d6d1eba834e"
+    },
+    {
+      "id": "code",
+      "label": "Transformers 5.20.2 实现",
+      "url": "https://github.com/huggingface/transformers/blob/v5.20.2/src/transformers/models/qwen4_exp/modeling_qwen4_exp.py",
+      "sha256": "baa79cf3fd27789f159e028ba842459ba4e459e3112bf15e773e6a4d73dc2030",
+      "version": "5.20.2"
+    }
+  ],
+  "variants": {
+    "base": {
+      "label": "指定基模",
+      "dimensions": {
+        "layers": 48,
+        "hidden": 2560,
+        "vocab": 248320,
+        "experts": 512,
+        "top_k": 10,
+        "expert_width": 640,
+        "q_heads": 24,
+        "kv_heads": 2,
+        "shared": 1,
+        "context": 262144,
+        "tied": false,
+        "streams": 4,
+        "stream_hidden": 10240
+      },
+      "attention_schedule": [
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA"
+      ],
+      "ffn_schedule": [
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE"
+      ],
+      "config_source": "base"
+    },
+    "tiny": {
+      "label": "Collection tiny 参考",
+      "dimensions": {
+        "layers": 8,
+        "hidden": 8,
+        "vocab": 248320,
+        "experts": 32,
+        "top_k": 10,
+        "expert_width": 128,
+        "q_heads": 12,
+        "kv_heads": 1,
+        "shared": 1,
+        "context": 262144,
+        "tied": false,
+        "streams": 4,
+        "stream_hidden": 32
+      },
+      "attention_schedule": [
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA",
+        "GDN",
+        "GDN",
+        "GDN",
+        "QSA"
+      ],
+      "ffn_schedule": [
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE",
+        "MoE"
+      ],
+      "config_source": "tiny"
+    }
+  },
+  "evidence": "配置与实现核对；非执行轨迹",
+  "has_trace": false,
+  "category": "线性混合",
+  "modalities": [
+    "文本",
+    "图像",
+    "视频"
+  ],
+  "summary": "GDN + QSA，加四路 gated HC 与 hashed PLE。相同的“混合注意力”标签背后有三套独立变化。",
+  "pattern": "[GDN ×3 → QSA] ×12",
+  "tiny_status": "目标同名 tiny 已收录",
+  "tiny_note": "tiny 模型卡明确来自 Qwen3.8-Flash-Next，缩成 8 层、H8、32/top10。仍改变 PLE hash 容量、视觉深度、head 尺寸；不能视为数值等价基模。官方 model_type=qwen4_exp。",
+  "highlights": [
+    "QSA 算术平均池化 + indexer RoPE，不是 GLM 的 learned pooling",
+    "GDN 输出门改为 sigmoid，与 Qwen3.5 的 SiLU 不同",
+    "gated HC 无 Sinkhorn；第 2 层前另注入 hashed PLE"
+  ],
+  "input": "图像／视频与 Qwen3.5 类似，视觉 patch16/temporal2 → 27 层 ViT → merger → H2560。语言 embedding 复制 4 份并沿 hidden 轴拼成 [B,T,4H]，供 gated HC 使用。",
+  "norm": "HC 对四个 stream 做 group RMSNorm(1+w)；GDN 输出为 RMSNorm×sigmoid(z)。不能沿用 Qwen3.5 的 SiLU 输出门。",
+  "position": "主 QSA attention 用 partial 25% MRoPE；QSA indexer 也对 Q 和池化 K 做 RoPE，K 的位置采用 block 起点。GDN 路径无 RoPE。",
+  "residual": {
+    "title": "4-stream gated HyperConnections",
+    "summary": "低秩门控混合四路输入；没有 mHC 的双随机 comb/Sinkhorn 矩阵。",
+    "steps": [
+      "group RMSNorm(1+w) on 4H",
+      "down(4H→rank)/4 → SiLU → up → sigmoid",
+      "门控后的四路取 mean → H",
+      "子层计算",
+      "2sigmoid injection gate",
+      "子层输出扩成 4 路 → 与旧 4H 相加"
+    ],
+    "equations": [
+      "m = mean_stream(sigmoid(Wup SiLU(Wdown Norm(X)/4)) ⊙ Norm(X))",
+      "Xnew = X + flatten(2sigmoid(Wg Norm(X)/4) ⊙ block(m))"
+    ],
+    "notes": [
+      "基模 HC rank320，tiny rank4。Attention 与 MoE 使用独立 HC。四路激活不是跨 token cache。"
+    ],
+    "sources": [
+      "base",
+      "code"
+    ]
+  },
+  "output": "最终使用可学习 gated HC mixer（group RMSNorm + low-rank sigmoid mixing）将 4H 折叠到 H，再接不绑定的 LM head。不是 GLM Flash 的无权 mean。",
+  "prefill": "GDN chunk recurrence；QSA 对每个 query 的可见前缀独立选完整池与尾部。PLE 在输入序列上构造 n-gram hash，保留尾部 token ID 和卷积历史。",
+  "decode": "GDN 单步更新；QSA 追加 main K/V 与 raw index key 后重新选择可见池。PLE 还读取最近 2 个 token ID 和膨胀卷积历史；不能只保留普通 KV cache。",
+  "extra": "PLE 只在 1-based layer 2（L1）之前注入：hashed 2/3-gram，每阶 8 个 hash heads → lookup → key/value projection → signed-sqrt dot gate → gated value；再加 depthwise dilated conv(k4,dilation3)+SiLU。卷积历史长度为 9，不是 4。",
+  "mtp": "配置 1 个 QSA 辅助 MTP block，普通 token 循环不自动运行。",
+  "attention": {
+    "GDN": {
+      "title": "GatedDeltaNet",
+      "summary": "标量衰减 g 对每个 value head 单独设置；不是 KDA 的逐通道衰减。",
+      "steps": [
+        "QKV projection",
+        "depthwise causal conv4 + SiLU",
+        "q=L2Norm(q)/√Dk; k=L2Norm(k); head repeat",
+        "β=sigmoid(b), g=-exp(A_log)*softplus(a+dt_bias)",
+        "gated delta recurrence",
+        "head RMSNorm × sigmoid(z)",
+        "output projection"
+      ],
+      "equations": [
+        "q = L2Norm(q) / √Dk; k = L2Norm(k)",
+        "S̃ = exp(g) · Sprev",
+        "δ = β · (v − kᵀ S̃)",
+        "Snew = S̃ + k ⊗ δ; y = qᵀ Snew"
+      ],
+      "notes": [
+        "基模 16 key heads / 48 value heads，key 重复 3 次；output_gate_type=sigmoid。tiny 为 4/12 heads。"
+      ],
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "QSA": {
+      "title": "QSA-gated GQA",
+      "summary": "每四个可见 token 构成一个均值池；索引选择约束主 GQA 的可见 key。",
+      "steps": [
+        "index Q/K projection",
+        "Q RMSNorm + RoPE",
+        "raw index key cache",
+        "完整 4-token block 算术均值",
+        "pooled K RMSNorm + block-start RoPE",
+        "Σhead ReLU(Q·K)/√128 → top blocks",
+        "展开 raw indices + ≤3 tail",
+        "main gated GQA + causal/QSA mask"
+      ],
+      "equations": [
+        "score(block) = Σheads ReLU(q·kpool) / √128",
+        "最多 2048/4 = 512 个池 → raw budget 2048 + tail 3"
+      ],
+      "notes": [
+        "indexer 4 heads ×128；没有 GLM 式 per-channel compression gate 或 learned head weighting。",
+        "eager 实现可物化 dense scores 后加 mask；语义稀疏不保证所有后端都运行稀疏 kernel。"
+      ],
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "moe": {
+    "title": "Softmax MoE + gated shared",
+    "summary": "路由分支与共享分支并行；共享专家不占 top-k 名额。",
+    "steps": [
+      "同一输入分成并行分支",
+      "各分支独立计算（下图）",
+      "routed output + shared output →当前模型的FFN residual更新"
+    ],
+    "equations": [
+      "yrouted = Σ wᵢ Expertᵢ(x)",
+      "yshared = sigmoid(wgate x) · SharedMLP(x)",
+      "y = yrouted + yshared"
+    ],
+    "notes": [
+      "基模 512/top10，expert/shared width640；tiny32/top10，width128。MoE 输出通过独立 HC injection 回到四路。",
+      "Router的ID/weights控制routed专家分支；原始H同时送入专家投影。Router输出不是送给shared的输入，也不直接加到最终hidden。"
+    ],
+    "sources": [
+      "base",
+      "code"
+    ],
+    "routing_steps": [
+      "linear H→E",
+      "FP32 softmax",
+      "top10 →selected-score renorm"
+    ],
+    "branches": [
+      {
+        "title": "ROUTER · from original H",
+        "steps": [
+          "linear H→E",
+          "FP32 softmax",
+          "top10 →selected-score renorm"
+        ]
+      },
+      {
+        "title": "ROUTED EXPERTS · from X",
+        "steps": [
+          "与Router相同的H输入",
+          "按expert IDs执行专家gated MLP",
+          "按Router weights加权求和"
+        ]
+      },
+      {
+        "title": "SHARED BRANCH",
+        "steps": [
+          "同一H输入",
+          "always-on shared gated MLP",
+          "×sigmoid(shared gate)"
+        ]
+      }
+    ],
+    "merge": "routed output + shared output →当前模型的FFN residual更新"
+  },
+  "states": [
+    {
+      "name": "GDN QKV conv state",
+      "base_shape": "[B,10240,4]",
+      "tiny_shape": "[B,640,4]",
+      "growth": "fixed",
+      "detail": "fixed"
+    },
+    {
+      "name": "GDN recurrent state",
+      "base_shape": "[B,48,128,128]",
+      "tiny_shape": "[B,12,32,32]",
+      "growth": "fixed; FP32 configured",
+      "detail": "fixed; FP32 configured"
+    },
+    {
+      "name": "QSA main K and V(each)",
+      "base_shape": "[B,2,L,256]",
+      "tiny_shape": "[B,1,L,32]",
+      "growth": "linear in L",
+      "detail": "linear in L"
+    },
+    {
+      "name": "QSA raw index keys",
+      "base_shape": "[B,L,128]",
+      "tiny_shape": "[B,L,128]",
+      "growth": "linear in L",
+      "detail": "linear in L"
+    },
+    {
+      "name": "PLE token history",
+      "base_shape": "last2 tokenIDs per sequence",
+      "tiny_shape": "same",
+      "growth": "bounded ngram history",
+      "detail": "bounded ngram history"
+    },
+    {
+      "name": "PLE conv state at zero-basedL1",
+      "base_shape": "[B,10240,9]",
+      "tiny_shape": "[B,32,9]",
+      "growth": "fixed;9=(kernel4-1)*dilation3",
+      "detail": "fixed;9=(kernel4-1)*dilation3"
+    },
+    {
+      "name": "HC streams",
+      "base_shape": "[B,T,10240]",
+      "tiny_shape": "[B,T,32]",
+      "growth": "current activation, NOT autoregressive cache",
+      "detail": "current activation, NOT autoregressive cache"
+    },
+    {
+      "name": "position_ids",
+      "base_shape": "full position history retained for indexer",
+      "tiny_shape": "same semantic",
+      "growth": "linear in L",
+      "detail": "linear in L"
+    }
+  ],
+  "comparison": {
+    "input": {
+      "signature": "文本,图像,视频ple:qwen3-8-flash-next",
+      "title": "文本 / 图像 / 视频",
+      "detail": "图像／视频与 Qwen3.5 类似，视觉 patch16/temporal2 → 27 层 ViT → merger → H2560。语言 embedding 复制 4 份并沿 hidden 轴拼成 [B,T,4H]，供 gated HC 使用。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "attention": {
+      "signature": "gdn-qsa",
+      "title": "[GDN ×3 → QSA] ×12",
+      "detail": "GDN + QSA，加四路 gated HC 与 hashed PLE。相同的“混合注意力”标签背后有三套独立变化。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "position": {
+      "signature": "mrope-indexrope",
+      "title": "主 QSA attention 用 partial 25% MRoPE",
+      "detail": "主 QSA attention 用 partial 25% MRoPE；QSA indexer 也对 Q 和池化 K 做 RoPE，K 的位置采用 block 起点。GDN 路径无 RoPE。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "normalization": {
+      "signature": "qwen3-8-flash-next-norm",
+      "title": "归一化位置与参数化",
+      "detail": "HC 对四个 stream 做 group RMSNorm(1+w)；GDN 输出为 RMSNorm×sigmoid(z)。不能沿用 Qwen3.5 的 SiLU 输出门。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "residual": {
+      "signature": "gated-hc",
+      "title": "4-stream gated HyperConnections",
+      "detail": "低秩门控混合四路输入；没有 mHC 的双随机 comb/Sinkhorn 矩阵。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "routing": {
+      "signature": "softmax",
+      "title": "Softmax MoE + gated shared",
+      "detail": "linear H→E → FP32 softmax → top10 →selected-score renorm",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "experts": {
+      "signature": "swiglu:(512, 10, 640)",
+      "title": "512 专家选 10 · width 640",
+      "detail": "路由分支与共享分支并行；共享专家不占 top-k 名额。 基模 512/top10，expert/shared width640；tiny32/top10，width128。MoE 输出通过独立 HC injection 回到四路。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "shared": {
+      "signature": "gated-shared",
+      "title": "1个独立sigmoid-gated shared expert",
+      "detail": "shared不参与routed top-k；此行按实际分支语义对齐。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "state": {
+      "signature": "gdn-qsa-cache",
+      "title": "GDN QKV conv state / GDN recurrent state / QSA main K and V(each) / QSA raw index keys / PLE token history / PLE conv state at zero-basedL1 / HC streams / position_ids",
+      "detail": "GDN QKV conv state: fixed；GDN recurrent state: fixed; FP32 configured；QSA main K and V(each): linear in L；QSA raw index keys: linear in L；PLE token history: bounded ngram history；PLE conv state at zero-basedL1: fixed;9=(kernel4-1)*dilation3；HC streams: current activation, NOT autoregressive cache；position_ids: linear in L",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "prefill": {
+      "signature": "gdn-qsa-prefill",
+      "title": "Prompt并行前向",
+      "detail": "GDN chunk recurrence；QSA 对每个 query 的可见前缀独立选完整池与尾部。PLE 在输入序列上构造 n-gram hash，保留尾部 token ID 和卷积历史。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "decode": {
+      "signature": "gdn-qsa-decode",
+      "title": "单token状态推进",
+      "detail": "GDN 单步更新；QSA 追加 main K/V 与 raw index key 后重新选择可见池。PLE 还读取最近 2 个 token ID 和膨胀卷积历史；不能只保留普通 KV cache。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "output": {
+      "signature": "gated-hc-head",
+      "title": "最终使用可学习 gated HC mixer（group RMSNorm + low-rank sigmoid mixing）将 4H 折叠到 H，再接不绑定的 LM head",
+      "detail": "最终使用可学习 gated HC mixer（group RMSNorm + low-rank sigmoid mixing）将 4H 折叠到 H，再接不绑定的 LM head。不是 GLM Flash 的无权 mean。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "auxiliary": {
+      "signature": "qwen3-8-flash-next-aux",
+      "title": "可选模块与不执行的分支",
+      "detail": "PLE 只在 1-based layer 2（L1）之前注入：hashed 2/3-gram，每阶 8 个 hash heads → lookup → key/value projection → signed-sqrt dot gate → gated value；再加 depthwise dilated conv(k4,dilation3)+SiLU。卷积历史长度为 9，不是 4。 配置 1 个 QSA 辅助 MTP block，普通 token 循环不自动运行。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "indexer": {
+      "signature": "mean-pool-raw",
+      "title": "QSA选raw token",
+      "detail": "4-token arithmetic mean池化；Q/K RMSNorm+RoPE；Σhead ReLU scores选择最多512池，再展开2048+3个槽。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    },
+    "gating": {
+      "signature": "scalar-sigmoid",
+      "title": "GDN标量衰减 + sigmoid输出门",
+      "detail": "GDN输出gate由config设为sigmoid；QSA主attention也有sigmoid输出gate。与Qwen3.5的SiLU不同。",
+      "sources": [
+        "base",
+        "code"
+      ]
+    }
+  },
+  "limitations": [
+    "本站结构页展示配置与源码级数据流，没有为此基模采集token、激活、路由权重或logits。",
+    "同名功能按语义阶段对齐，不将不同深度的层号一一等价，也不把稀疏可见性当成所有后端的物理内存或性能结论。"
+  ]
+}

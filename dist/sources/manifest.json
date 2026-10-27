@@ -1,0 +1,33 @@
+{
+  "observed_on": "2026-10-27",
+  "collection": "https://huggingface.co/collections/tiny-random/tiny-ramdom-models",
+  "models": {
+    "glm-5.3-flash": {
+      "repo": "tiny-random/glm-5.3-flash",
+      "revision": "aeb642e89f4bb6b55b186ca440edff0acb9ee9f5",
+      "base_repo": "zai-org/GLM-5.3-Flash",
+      "base_revision": "46a050bec13002ad29ee795c16e61cf4fa3c4a9c",
+      "weight_metadata": "Safetensors header only; 195512 bytes; 1474 tensor entries"
+    },
+    "glm-5.3": {
+      "repo": "tiny-random/glm-5.3",
+      "revision": "main at observation time; commit not captured",
+      "evidence_scope": "config only"
+    }
+  },
+  "implementation": "https://github.com/huggingface/transformers/blob/a672eb5f474b8b30173e9f96eab66adf292da635/src/transformers/models/glm5_next/modeling_glm5_next.py",
+  "files": [
+    {
+      "file": "glm-5.3-flash.config.json",
+      "sha256": "e373f4bea4dccd2c657487394359b180987cc030e71ead03296dc5ae25685587"
+    },
+    {
+      "file": "glm-5.3-flash.tensors.json",
+      "sha256": "262bd24e970844a592b73eb679f7f6d46cb72483fc9f111e05004120c79d7f15"
+    },
+    {
+      "file": "glm-5.3.config.json",
+      "sha256": "a489bb439502203c180b36b2f7cc2e155030b5a90136428164d3d900e9c6b3ce"
+    }
+  ]
+}
